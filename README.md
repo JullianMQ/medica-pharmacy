@@ -10,3 +10,4 @@ This is a group project completed together with:
 - Lyra Salvacion - https://www.facebook.com/lj.salvacion.9
 - Renell Constantino - https://www.facebook.com/renell.constantino.21
 - Frances Tumampos - https://www.facebook.com/Praaaaaaaan
+- Jullian Quiambao - https://www.facebook.com/JulzMQ
