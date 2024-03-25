@@ -14,62 +14,40 @@
     CARD-BG-FOOT-2: #E2FCD6
     BUTTON-BG-2: #14967F
     !-->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/signup_login.css">
+    <link rel="stylesheet" href="css/signup_login.css"/>
     <title>PureCure Pharmacy | Signup</title>
 </head>
 <body>
-    <h1 class="d-grid justify-content-center mt-5">Signup</h1>
-
-    <div class="container rounded border border-4 shadow-lg col-6">
+    <div class="container">
+        <header class="title-header">PureCure-Pharmacy</header>
         <form action="includes/signup.inc.php" method="POST" class="form">
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <label for="username" class="form-label flex-fill mt-3">Enter your Username</label>
-                    <input type="text" name="username" class="form-control flex-fill" placeholder="Username">
-                </div>
-                <div class="col-3"></div>
-            </div>
+            <div class="form-container">
+                <h1 class="header-h1">Sign Up</h1>
+                <label for="username" class="">Enter your Username</label>
+                <input type="text" name="username" class="form-text" placeholder="Username">
 
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <label for="pword" class="form-label flex-fill">Enter your password</label>
-                    <input type="password" name="pword" class="form-control flex-fill" placeholder="Password">
-                </div>
-                <div class="col-3"></div>
-            </div>
+                <label for="pword" class="form-label flex-fill">Enter your password</label>
+                <input type="password" name="pword" class="form-text" placeholder="Password">
 
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <label for="age" class="form-label">Enter your age</label>
-                    <input type="number" name="age" class="form-control flex-fill" placeholder="Age">
-                </div>
-                <div class="col-3"></div>
-            </div>
+                <label for="age" class="form-label">Enter your age</label>
+                <input type="number" name="age" class="form-text" placeholder="Age">
 
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <label for="email" class="form-label">Enter your email</label>
-                    <input type="email" name="email" class="form-control mb-4 flex-fill" placeholder="email@example.com">
-                </div>
-                <div class="col-3"></div>
+                <label for="email" class="form-label">Enter your email</label>
+                <input type="email" name="email" class="form-text" placeholder="email@example.com">
+                <input type="submit" class="form-button" value="Signup">
             </div>
-
-            <div class="row">
-                <div class="col-5"></div>
-                <input type="submit" class="btn btn-primary mb-3 col-2" value="Signup">
-                <div class="col-5"></div>
-            </div>
-    </form>
+        </form>
     </div>
+    <footer>
+        <div class="custom-shape-divider-bottom-1711354436">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </footer>
+
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
