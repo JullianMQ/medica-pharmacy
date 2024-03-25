@@ -1,7 +1,7 @@
 html {
     background-color: #F1F9FF;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url(../images/patternpad.svg);
     background-size: cover;
@@ -35,13 +35,13 @@ html {
 
 .title-header {
     display: flex;
-    padding: 1rem;
+    padding: .5rem;
     font-size: 2rem;
     font-weight: bolder;
 }
 
 .form-container {
-    padding: 2rem 4rem;
+    padding: 1rem 4rem 2rem 4rem;
     display: flex;
     flex: 1;
     justify-content: center;
@@ -56,7 +56,7 @@ html {
 
 .header-h1 {
     font-weight: 600;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .form {
@@ -80,19 +80,24 @@ html {
     border-radius: 5px;
     font-weight: bolder;
     color: #F1F9FF;
+
+
 }
 
-@media screen and (max-width: 410px){
+@media screen and (max-width: 430px){
     html {
-        font-size: 12px;
+        font-size: 14px;
+    }
+    .form-container {
+        padding: .5rem 1rem .5rem 1rem;
     }
 }
 
 @media screen and (max-width: 280px){
     .title-header {
         display: flex;
-        padding: 1rem;
-        font-size: 2rem;
+        padding: 1rem .5rem;
+        font-size: 1.5rem;
         font-weight: bolder;
     }
     .form-container {
