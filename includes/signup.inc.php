@@ -1,14 +1,17 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $userName = $_POST["username"];
+    $userName = $_POST["userName"];
     $pword = $_POST["pword"];
-    $age = $_POST["age"];
     $email = $_POST["email"];
 
     try {
         require_once("dbh.inc.php");
 
-        $signup_query = ("INSERT INTO users (userName, userPass, userAge, userEmail) VALUES (:userName, :pword, :age, :email);");
+        // TODO: AJAX SHIT
+        // CHECK userName FIRST IN DATABASE IF THERE'S ONE
+        // $userName_check = ("SELECT userName FROM user;");
+
+        $signup_query = ("INSERT INTO users (userName, userPass, userEmail) VALUES (:userName, :pword, :email);");
 
         //  prep query
         $statement = $pdo->prepare($signup_query);
@@ -17,15 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'cost' => 12
         ];
 
-        // hash sensitive info
-        // $salt = bin2hex(random_bytes(16));
-        // $pepper = "413c6ee41b0b940dcce43209f8620ae2";
-        // USERNAME
-        // $userToHash = $userName . $salt . $pepper;
-        // $hashedUser = hash("sha256", $userToHash);
-
         // PASSWORD
-        // $hashedPword = password_hash($pword, PASSWORD_BCRYPT, $options);
+        $hashedPword = password_hash($pword, PASSWORD_BCRYPT, $options);
 
         // EMAIL
         // $emailToHash = $emailToHash . $salt . $pepper;
@@ -33,8 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // bind params
         $statement->bindParam(":userName", $userName);
-        $statement->bindParam(":pword", $pword);
-        $statement->bindParam(":age", $age);
+        $statement->bindParam(":pword", $hashedPword);
         $statement->bindParam(":email", $email);
 
         // execute query 
@@ -45,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement = null;
 
         // go to login form
-        header("Location: login.php");
+        header("Location: ../login.php");
 
         // cut connection
         die();

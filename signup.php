@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <!--COLORS: 
     BACKGROUND: #F1F9FF
     FONT: #000000
@@ -26,17 +25,16 @@
         <form action="includes/signup.inc.php" method="POST" class="form">
             <div class="form-container">
                 <h1 class="header-h1">Sign Up</h1>
-                <label for="username" class="">Enter your Username</label>
-                <input type="text" name="username" class="form-text" placeholder="Username">
+                <label for="userName" class="form-label">Enter your username</label>
+                <!-- <input type="text" name="userName" class="form-text" id="userName" required  placeholder="Username" onfocusout="checkUserFocus()"> -->
+                <!-- TODO: UNCOMMENT FIRST INPUT AFTER CHECKUSERINPUT IS FINISHED -->
+                <input type="text" name="userName" class="form-text" id="userName" required  placeholder="Username">
 
                 <label for="pword" class="form-label flex-fill">Enter your password</label>
-                <input type="password" name="pword" class="form-text" placeholder="Password">
-
-                <label for="age" class="form-label">Enter your age</label>
-                <input type="number" name="age" class="form-text" placeholder="Age">
+                <input type="password" name="pword" class="form-text" required  placeholder="Password">
 
                 <label for="email" class="form-label">Enter your email</label>
-                <input type="email" name="email" class="form-text" placeholder="email@example.com">
+                <input type="email" name="email" class="form-text"  required placeholder="email@example.com">
                 <input type="submit" class="form-button" value="Signup">
             </div>
         </form>
@@ -51,6 +49,29 @@
             </svg>
         </div>
     </footer>
+    <!-- <script src="javascript/check_input.js"> </script> -->
+    <script>
+        function sendDataToServer(data) {
+            var xml_request = new XMLHttpRequest();
 
+            xml_request.onload = function () {
+                if (xml_request.status == 200) {
+                    // ALERT USER IF THERE'S AN EXISTING USER WITH THE SAME USERNAME
+                    alert("Username used!");
+                }
+            };
+
+            xml_request.open("POST", "includes/signup.inc.php", true);
+            xml_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xml_request.send("data=" + encodeURIComponent(data));
+        }
+
+        // Function to handle the focus out event
+        function checkUserFocus() {
+            let data = document.getElementById("userName").value;
+            alert("Username used");
+            sendDataToServer(data);
+        }
+    </script>
 </body>
 </html>
