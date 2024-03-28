@@ -1,11 +1,11 @@
 <?php
 
 $server = "mysql:host=localhost";
-$db_username = "root";
+$db_userName = "root";
 $db_pword = "";
 
 try {
-    $pdo = new PDO($server, $db_username, $db_pword);
+    $pdo = new PDO($server, $db_userName, $db_pword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // CHECK EXISTING DATABASE
@@ -35,7 +35,6 @@ try {
                         (userID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                         userName VARCHAR(255) NOT NULL,
                         userPass VARCHAR(255) NOT NULL,
-                        userAge INT(3) NOT NULL,
                         userEmail VARCHAR(255) NOT NULL,
                         regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
         }

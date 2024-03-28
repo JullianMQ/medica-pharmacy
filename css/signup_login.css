@@ -63,6 +63,11 @@ html {
     margin: .5rem;
 }
 
+.form-label {
+    align-self: self-start;
+    margin-left: 1rem;
+}
+
 .form-text {
     margin: 1rem;
     padding: .5rem 1rem;
@@ -99,6 +104,9 @@ html {
         padding: 1rem .5rem;
         font-size: 1.5rem;
         font-weight: bolder;
+    }
+    .form-label {
+        margin-left: .5rem;
     }
     .form-container {
         padding: .5rem .5rem;

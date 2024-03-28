@@ -4,36 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signup_login.css">
-    <title>PureCure Pharmacy | Login</title>
+    <title>Login Error</title>
 </head>
 <body>
-
-    <!-- Redirect into landing page/home page -->
     <div class="container">
-        <header class="title-header">PureCure-Pharmacy</header>
-        <form action="includes/login.inc.php" method="POST" class="form">
-        <div class="form-container">
-            <h1 class="header-h1">Log In</h1>
-            <label for="userName" class="form-label" >Enter your username</label>
-            <input type="text" name="userName" placeholder="Username" class="form-text" id="userName" required onfocusout="check_user_input()">
-
-            <label for="userName" class="form-label">Enter your Password</label>
-            <input type="password" name="pword" placeholder="Password" required class="form-text">
-            <!-- 
-                ADD A WAY TO CREATE A Forgot Password HERE
-                # OPTIONAL TODO:
-                SHOPEE WAY: Click Forgot Password -> Enter email
-                            -> Message email -> with link on how to reset
-                            -> Redirect into page -> Page asks to input new password
-                            -> It then updates the database to that password
-            -->
-            <small><small> <a href="#todo" target="_blank">Forgot Password? Click here</a> </small></small>
-
-            <input type="submit" class="form-button" value="Log In">
-        </div>
-        </form>
+        <header><h2>Login Failed</h2></header>
+        <h2>There was an error validating your username and password. 
+            <br>Hit the back button or <a href="login.php">here to log-in again</a></h2>
     </div>
-    
     <footer>
         <div class="custom-shape-divider-bottom-1711368160">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
