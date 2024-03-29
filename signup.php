@@ -1,45 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--COLORS: 
-    BACKGROUND: #F1F9FF
-    FONT: #000000
-    CARD-FONT-COLOR: #FFFFFF
-
-    CARD-BG-1: #095D7E
-    CARD-BG-FOOT-1: #CCECEE
-    BUTTON-BG-1: #095D7E
-
-    CARD-BG-2: #14967F
-    CARD-BG-FOOT-2: #E2FCD6
-    BUTTON-BG-2: #14967F
-    !-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/signup_login.css?v=<?php echo time(); ?>"/>
+    <link rel="stylesheet" href="css/signup_login.css?v=<?php echo time(); ?>" />
     <title>PureCure Pharmacy | Signup</title>
 </head>
+
 <body>
     <div class="container">
         <header class="title-header">PureCure-Pharmacy</header>
         <form action="includes/signup.inc.php" method="POST" class="form">
             <div class="form-container">
                 <h1 class="header-h1">Sign Up</h1>
-                <label for="userName" class="form-label">Enter your username</label>
-                <!-- <input type="text" name="userName" class="form-text" id="userName" required  placeholder="Username" onfocusout="checkUserFocus()"> -->
-                <!-- TODO: UNCOMMENT FIRST INPUT AFTER CHECKUSERINPUT IS FINISHED -->
-                <input type="text" name="userName" class="form-text" id="userName" required  placeholder="Username">
+                <label for="userName" class="form-label" id="username_check">Enter your username</label>
+                <input type="text" name="userName" class="form-text" id="userName" required placeholder="Username">
 
                 <label for="pword" class="form-label flex-fill">Enter your password</label>
-                <input type="password" name="pword" class="form-text" required  placeholder="Password">
+                <input type="password" name="pword" class="form-text" required placeholder="Password">
 
                 <label for="email" class="form-label">Enter your email</label>
-                <input type="email" name="email" class="form-text"  required placeholder="email@example.com">
-                <input type="submit" class="form-button" value="Signup">
+                <input type="email" name="email" class="form-text" required placeholder="email@example.com">
+                <input type="submit" class="form-button" id="submitBtn" value="Signup">
             </div>
         </form>
     </div>
-  
+
     <footer>
         <div class="custom-shape-divider-bottom-1711368160">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -49,29 +35,29 @@
             </svg>
         </div>
     </footer>
-    <!-- <script src="javascript/check_input.js"> </script> -->
     <script>
-        function sendDataToServer(data) {
-            var xml_request = new XMLHttpRequest();
+        document.getElementById('userName').addEventListener('input', function() {
+            let userName = this.value;
 
-            xml_request.onload = function () {
-                if (xml_request.status == 200) {
-                    // ALERT USER IF THERE'S AN EXISTING USER WITH THE SAME USERNAME
-                    alert("Username used!");
-                }
-            };
-
-            xml_request.open("POST", "includes/signup.inc.php", true);
-            xml_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xml_request.send("data=" + encodeURIComponent(data));
-        }
-
-        // Function to handle the focus out event
-        function checkUserFocus() {
-            let data = document.getElementById("userName").value;
-            alert("Username used");
-            sendDataToServer(data);
-        }
+            fetch('includes/check_username.inc.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'userName=' + userName
+                })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('username_check').textContent = data;
+                    if (data.trim() === 'Enter your username') {
+                        document.getElementById('submitBtn').disabled = false;
+                    } else {
+                        document.getElementById('submitBtn').disabled = true;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        })
     </script>
 </body>
+
 </html>

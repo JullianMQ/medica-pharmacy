@@ -7,33 +7,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once("dbh.inc.php");
 
-        // TODO: AJAX SHIT
-        // CHECK userName FIRST IN DATABASE IF THERE'S ONE
-        // $userName_check = ("SELECT userName FROM user;");
-
         $signup_query = ("INSERT INTO users (userName, userPass, userEmail) VALUES (:userName, :pword, :email);");
+        // second checker for username, incase they bypass button disable through inspect browser devtools
+        $check_username = ("SELECT * FROM users WHERE userName = '$userName';");
+        $check_user = $pdo->prepare($check_username);
+        $check_user->execute();
+        $result = $check_user->fetchAll(PDO::FETCH_ASSOC);
 
-        //  prep query
-        $statement = $pdo->prepare($signup_query);
+        if (empty($result)) {
+            $options = [
+                'cost' => 12
+            ];
 
-        $options = [
-            'cost' => 12
-        ];
+            //  prep query
+            $statement = $pdo->prepare($signup_query);
 
-        // PASSWORD
-        $hashedPword = password_hash($pword, PASSWORD_BCRYPT, $options);
+            // PASSWORD
+            $hashedPword = password_hash($pword, PASSWORD_BCRYPT, $options);
 
-        // EMAIL
-        // $emailToHash = $emailToHash . $salt . $pepper;
-        // $hashedEmail = hash("sha256", $emailToHash);
+            // bind params
+            $statement->bindParam(":userName", $userName);
+            $statement->bindParam(":pword", $hashedPword);
+            $statement->bindParam(":email", $email);
 
-        // bind params
-        $statement->bindParam(":userName", $userName);
-        $statement->bindParam(":pword", $hashedPword);
-        $statement->bindParam(":email", $email);
-
-        // execute query 
-        $statement->execute();
+            // execute query 
+            $statement->execute();
+        } else {
+            // if result is not empty then we deny their request to submit the data
+            echo "Denied";
+            header("Location: ../login.php");
+        }
 
         // free space
         $pdo = null;
