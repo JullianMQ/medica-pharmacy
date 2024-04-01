@@ -11,6 +11,7 @@ try {
     // CHECK EXISTING DATABASE
     $dbname = "pharmacy";
     $users_table = "users";
+    $products_table = "product";
     $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?;";
     $statement = $pdo->prepare($query);
     $statement->execute([$dbname]);
@@ -20,12 +21,17 @@ try {
         $pdo->exec("USE $dbname");
 
         // CHECK FOR EXISITING TABLE
-        $table_check = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
-        $statement = $pdo->prepare($table_check);
-        $statement->execute([$dbname, $users_table]);
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $table_check_users = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_users = $pdo->prepare($table_check_users);
+        $statement_users->execute([$dbname, $users_table]);
+        $result_users = $statement_users->fetch(PDO::FETCH_ASSOC);
 
-        if ($result) {
+        $table_check_products = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_products = $pdo->prepare($table_check_products);
+        $statement_products->execute([$dbname, $products_table]);
+        $result_products = $statement_products->fetch(PDO::FETCH_ASSOC);
+        
+        if ($result_users) {
             // get data here
         } else {
         // CREATE TABLES FOR users  
@@ -37,6 +43,21 @@ try {
                         userPass VARCHAR(255) NOT NULL,
                         userEmail VARCHAR(255) NOT NULL,
                         regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
+        }
+        if ($result_products) {
+            // get data here
+        } else {
+        // CREATE TABLES FOR users  
+        echo "<h1>PRODUCTS TABLE NOT FOUND<br></h1>";
+        echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+        $pdo->exec("CREATE TABLE $products_table 
+        (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        productName VARCHAR(255) NOT NULL,
+        productDescription TEXT,
+        productPrice DECIMAL(10, 2) NOT NULL,
+        productQuantity INT NOT NULL,
+        productAddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        imagePath VARCHAR(255) NOT NULL);");
         }
         // START HERE: RENELL
         // TABLE FOR PRODUCTS PAGE, CHECK FOR EXISTING PRODUCTS TABLE -> MAKE ONE IF NULL
