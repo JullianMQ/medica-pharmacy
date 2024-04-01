@@ -1,4 +1,4 @@
-# purecure-pharmacy
+# medica-pharmacy
 Final FullStack Output for 2nd Year DWEB/IMAN 
 ###
 This is a group project completed together with: 
