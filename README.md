@@ -6,7 +6,7 @@ This is a group project completed together with:
 -  Renell Constantino as **Database/Backend Developer**
 -  Frances Tumampos as **JavaScript/Frontend Supervisor**
 - Jullian Quiambao as **Project Manager/Backend Supervisor**
-htansoeusnth
+
 ## Social Links:
 - Lyra Salvacion - https://www.facebook.com/lj.salvacion.9
 - Renell Constantino - https://www.facebook.com/renell.constantino.21
