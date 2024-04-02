@@ -50,7 +50,7 @@
     <h1>Admin Product Management</h1>
     
     <!-- Product Insertion Form -->
-    <form action="includes/insert_product.inc.php" method="post">
+     <form action="includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
         <h2>Add New Product</h2>
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
@@ -60,8 +60,8 @@
         <input type="number" id="productPrice" name="productPrice" step="0.01" min="0" required>
         <label for="productQuantity">Quantity:</label>
         <input type="number" id="productQuantity" name="productQuantity" min="0" required>
-        <label for="imagePath">Image Path:</label>
-        <input type="text" id="imagePath" name="imagePath" required>
+        <label for="image">Select Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
         <input type="submit" value="Add Product">
     </form>
 

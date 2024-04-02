@@ -47,9 +47,6 @@ require_once("includes/dbh.inc.php");
     <div class="product-container">
         <?php
         // Database connection and product retrieval logic
-        $server = "mysql:host=localhost";
-        $db_userName = "root";
-        $db_pword = "";
         try {
             $pdo = new PDO($server, $db_userName, $db_pword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,7 +68,9 @@ require_once("includes/dbh.inc.php");
             // Output the retrieved data
             foreach ($products as $product) {
                 echo "<div class='product'>";
-                echo "<img src='{$product['imagePath']}' alt='{$product['productName']}'>";
+                // Construct the correct image path
+                $imagePath = "images/uploads/" . basename($product['imagePath']);
+                echo "<img src='{$imagePath}' alt='{$product['productName']}'>";
                 echo "<h2>{$product['productName']}</h2>";
                 echo "<p>Description: {$product['productDescription']}</p>";
                 echo "<p>Price: {$product['productPrice']}</p>";
