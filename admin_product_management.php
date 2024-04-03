@@ -20,7 +20,7 @@
             display: block;
             margin-bottom: 5px;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="file"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -50,18 +50,20 @@
     <h1>Admin Product Management</h1>
     
     <!-- Product Insertion Form -->
-     <form action="includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
+    <form action="includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
         <h2>Add New Product</h2>
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
-        <label for="productDescription">Description:</label>
-        <input type="text" id="productDescription" name="productDescription">
+        <label for="dosage">Dosage:</label>
+        <input type="number" id="dosage" name="dosage" min="0" required>
+        <label for="dosageForm">Dosage Form:</label>
+        <input type="text" id="dosageForm" name="dosageForm" required>
         <label for="productPrice">Price:</label>
         <input type="number" id="productPrice" name="productPrice" step="0.01" min="0" required>
         <label for="productQuantity">Quantity:</label>
         <input type="number" id="productQuantity" name="productQuantity" min="0" required>
-        <label for="image">Select Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required>
+        <label for="imagePath">Select Image:</label>
+        <input type="file" id="imagePath" name="imagePath" accept="image/*" required>
         <input type="submit" value="Add Product">
     </form>
 

@@ -12,6 +12,7 @@ try {
     $dbname = "pharmacy";
     $users_table = "users";
     $products_table = "product";
+    $categories_table = "categories";
     $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?;";
     $statement = $pdo->prepare($query);
     $statement->execute([$dbname]);
@@ -30,6 +31,11 @@ try {
         $statement_products = $pdo->prepare($table_check_products);
         $statement_products->execute([$dbname, $products_table]);
         $result_products = $statement_products->fetch(PDO::FETCH_ASSOC);
+
+        $table_check_categories = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_categories = $pdo->prepare($table_check_categories);
+        $statement_categories->execute([$dbname, $categories_table]);
+        $result_categories = $statement_categories->fetch(PDO::FETCH_ASSOC);
         
         if ($result_users) {
             // get data here
@@ -44,20 +50,40 @@ try {
                         userEmail VARCHAR(255) NOT NULL,
                         regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
         }
+        if ($result_categories) {
+            // get data here
+        } else {
+        // CREATE TABLES FOR categories  
+            echo "<h1>TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $categories_table 
+                        (categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                         categoryName VARCHAR(255) NOT NULL,
+                         categoryDescription VARCHAR(255) NOT NULL);");
+        }
+
+
+
+
+
         if ($result_products) {
             // get data here
         } else {
-        // CREATE TABLES FOR users  
-        echo "<h1>PRODUCTS TABLE NOT FOUND<br></h1>";
-        echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
-        $pdo->exec("CREATE TABLE $products_table 
-        (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        productName VARCHAR(255) NOT NULL,
-        productDescription TEXT,
-        productPrice DECIMAL(10, 2) NOT NULL,
-        productQuantity INT NOT NULL,
-        productAddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        imagePath VARCHAR(255) NOT NULL);");
+        // CREATE TABLES FOR PRODUCTS  
+            echo "<h1>PRODUCTS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $products_table 
+                        (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                        productName VARCHAR(255) NOT NULL,
+                        dosage INT(11) NOT NULL,
+                        dosageForm VARCHAR(255) NOT NULL,
+                        productPrice DECIMAL(10, 2) NOT NULL,
+                        productQuantity INT NOT NULL,
+                        productAddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        imagePath VARCHAR(255) NOT NULL,
+                        categoryID INT,
+                        FOREIGN KEY (categoryID) REFERENCES categories(categoryID)
+                        );");
         }
         // START HERE: RENELL
         // TABLE FOR PRODUCTS PAGE, CHECK FOR EXISTING PRODUCTS TABLE -> MAKE ONE IF NULL

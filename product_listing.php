@@ -48,6 +48,7 @@ require_once("includes/dbh.inc.php");
         <?php
         // Database connection and product retrieval logic
         try {
+            // Establish a connection to the database
             $pdo = new PDO($server, $db_userName, $db_pword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -69,12 +70,13 @@ require_once("includes/dbh.inc.php");
             foreach ($products as $product) {
                 echo "<div class='product'>";
                 // Construct the correct image path
-                $imagePath = "images/uploads/" . basename($product['imagePath']);
+                $imagePath = "../images/uploads/" . basename($product['imagePath']);
                 echo "<img src='{$imagePath}' alt='{$product['productName']}'>";
                 echo "<h2>{$product['productName']}</h2>";
-                echo "<p>Description: {$product['productDescription']}</p>";
                 echo "<p>Price: {$product['productPrice']}</p>";
                 echo "<p>Quantity: {$product['productQuantity']}</p>";
+                echo "<p>Dosage: {$product['dosage']}</p>";
+                echo "<p>Dosage Form: {$product['dosageForm']}</p>";
                 echo "<p>Added Date: {$product['productAddedDate']}</p>";
                 echo "</div>";
             }
