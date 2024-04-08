@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signup_login.css">
-    <title>PureCure Pharmacy | Login</title>
+    <title>Medica-Pharmacy | Login</title>
 </head>
 <body>
 
     <!-- Redirect into landing page/home page -->
     <div class="container">
-        <header class="title-header">PureCure-Pharmacy</header>
+        <header class="title-header">Medica-Pharmacy</header>
         <form action="includes/login.inc.php" method="POST" class="form">
         <div class="form-container">
             <h1 class="header-h1">Log In</h1>
-            <label for="userName" class="form-label" >Enter your username</label>
+            <label for="userName" class="form-label">Enter your username</label>
             <input type="text" name="userName" placeholder="Username" class="form-text" id="userName" required onfocusout="check_user_input()">
 
             <label for="userName" class="form-label">Enter your Password</label>

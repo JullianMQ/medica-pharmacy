@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signup_login.css?v=<?php echo time(); ?>" />
-    <title>PureCure Pharmacy | Signup</title>
+    <title>Medica-Pharmacy | Signup</title>
 </head>
 
 <body>
     <div class="container">
-        <header class="title-header">PureCure-Pharmacy</header>
+        <header class="title-header">Medica-Pharmacy</header>
         <form action="includes/signup.inc.php" method="POST" class="form">
             <div class="form-container">
                 <h1 class="header-h1">Sign Up</h1>

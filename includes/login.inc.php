@@ -5,6 +5,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     try {
         require_once("dbh.inc.php");
+        require_once("config.inc.php");
 
         $user_check = ("SELECT userName, userPass FROM users WHERE userName LIKE '$userName';");
 
@@ -25,6 +26,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     // TODO:
                     // REDIRECT INTO LANDING PAGE OR PREVIOUS PAGE
                     echo "<h1>You logged in</h1>";
+                    $_SESSION["userName"] = $userName;
+                    header("Location: ../index.php");
                 }
             }
         }
@@ -37,5 +40,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         die("<h1>Something failed:</h1> " . $e->getMessage());
     }
 } else {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }

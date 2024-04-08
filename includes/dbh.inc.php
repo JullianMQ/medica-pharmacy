@@ -62,10 +62,6 @@ try {
                          categoryDescription VARCHAR(255) NOT NULL);");
         }
 
-
-
-
-
         if ($result_products) {
             // get data here
         } else {
