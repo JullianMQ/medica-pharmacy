@@ -25,9 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 } else {
                     // TODO:
                     // REDIRECT INTO LANDING PAGE OR PREVIOUS PAGE
-                    echo "<h1>You logged in</h1>";
-                    $_SESSION["userName"] = $userName;
-                    header("Location: ../index.php");
+                    header("Location: ../product_listing.php");
                 }
             }
         }
