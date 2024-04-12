@@ -11,8 +11,14 @@ try {
     // CHECK EXISTING DATABASE
     $dbname = "pharmacy";
     $users_table = "users";
-    $products_table = "product";
+    $shopping_sessions_table = "shopping_sessions";
+    $cart_items_table = "cart_items";
+    $products_table = "products";
     $categories_table = "categories";
+    $orders_table = "orders";
+    $order_details_table = "order_details";
+    $payment_details_table = "payment_details";
+
     $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?;";
     $statement = $pdo->prepare($query);
     $statement->execute([$dbname]);
@@ -22,20 +28,46 @@ try {
         $pdo->exec("USE $dbname");
 
         // CHECK FOR EXISTING TABLES
+        //USERS
         $table_check_users = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
         $statement_users = $pdo->prepare($table_check_users);
         $statement_users->execute([$dbname, $users_table]);
         $result_users = $statement_users->fetch(PDO::FETCH_ASSOC);
-
+        //SHOPPING SESSIONS
+        $table_check_shopping_sessions = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_shopping_sessions = $pdo->prepare($table_check_shopping_sessions);
+        $statement_shopping_sessions->execute([$dbname, $shopping_sessions_table]);
+        $result_shopping_sessions = $statement_shopping_sessions->fetch(PDO::FETCH_ASSOC);
+        //CART ITEMS
+        $table_check_cart_items = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_cart_items = $pdo->prepare($table_check_cart_items);
+        $statement_cart_items ->execute([$dbname, $cart_items_table]);
+        $result_cart_items  = $statement_cart_items ->fetch(PDO::FETCH_ASSOC);
+        //PRODUCTS
         $table_check_products = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
         $statement_products = $pdo->prepare($table_check_products);
-        $statement_products->execute([$dbname, $products_table]);
-        $result_products = $statement_products->fetch(PDO::FETCH_ASSOC);
-
+        $statement_products ->execute([$dbname, $products_table]);
+        $result_products  = $statement_products ->fetch(PDO::FETCH_ASSOC);
+        //CATEGORIES
         $table_check_categories = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
         $statement_categories = $pdo->prepare($table_check_categories);
-        $statement_categories->execute([$dbname, $categories_table]);
-        $result_categories = $statement_categories->fetch(PDO::FETCH_ASSOC);
+        $statement_categories ->execute([$dbname, $categories_table]);
+        $result_categories  = $statement_categories ->fetch(PDO::FETCH_ASSOC);
+        //ORDERS
+        $table_check_orders = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_orders = $pdo->prepare($table_check_orders);
+        $statement_orders ->execute([$dbname, $orders_table]);
+        $result_orders  = $statement_orders ->fetch(PDO::FETCH_ASSOC);
+        //ORDER DETAILS
+        $table_check_order_details = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_order_details = $pdo->prepare($table_check_order_details);
+        $statement_order_details ->execute([$dbname, $order_details_table]);
+        $result_order_details  = $statement_order_details ->fetch(PDO::FETCH_ASSOC);
+        //PAYMENT DETAILS
+        $table_check_payment_details = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
+        $statement_payment_details = $pdo->prepare($table_check_payment_details);
+        $statement_payment_details ->execute([$dbname, $payment_details_table]);
+        $result_payment_details  = $statement_payment_details ->fetch(PDO::FETCH_ASSOC);
         
         if ($result_users) {
             // User table exists, no need to create
@@ -50,74 +82,118 @@ try {
                         userEmail VARCHAR(255) NOT NULL,
                         regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
         }
-        
+        if ($result_shopping_sessions) {
+            // SHOPPING_SESSIONS table exists, no need to create
+        } else {
+            // CREATE TABLE FOR SHOPPING_SESSIONS
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $shopping_sessions_table (
+                session_id INT AUTO_INCREMENT PRIMARY KEY,
+                userID INT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (userID) REFERENCES users(userID)
+            );");
+        }
         if ($result_categories) {
-            // Categories table exists, no need to create
-            // Insert categories and descriptions here
-            $existing_categories_query = "SELECT COUNT(*) AS count FROM $categories_table";
-            $existing_categories_statement = $pdo->prepare($existing_categories_query);
-            $existing_categories_statement->execute();
-            $existing_categories_result = $existing_categories_statement->fetch(PDO::FETCH_ASSOC);
-            if ($existing_categories_result['count'] == 0) {
-                $pdo->exec("INSERT INTO $categories_table (categoryName, categoryDescription) VALUES 
-                            ('Analgesics', 'Medications that alleviate pain without causing loss of consciousness, including nonsteroidal anti-inflammatory drugs (NSAIDs) and opioids.'),
-                            ('Antibiotics', 'Drugs used to treat bacterial infections by inhibiting the growth of bacteria or killing them outright.'),
-                            ('Antidepressants', 'Medications primarily used to treat depression, but also used for other mood disorders and conditions like anxiety.'),
-                            ('Antihypertensives', 'Medications used to treat high blood pressure.'),
-                            ('Proton Pump Inhibitors (PPIs)', 'Medications used to reduce stomach acid production, commonly prescribed for acid reflux and peptic ulcers.'),
-                            ('Antidiabetic Agents', 'Medications used to manage blood sugar levels in individuals with diabetes.'),
-                            ('Anti-inflammatory Agents', 'Drugs that reduce inflammation, often used to treat conditions such as arthritis and inflammatory bowel disease.'),
-                            ('Anticoagulants/Antithrombotics', 'Medications used to prevent the formation of blood clots or to dissolve existing clots.'),
-                            ('Anticonvulsants', 'Medications used to prevent or control seizures in individuals with epilepsy or other seizure disorders.'),
-                            ('Antiemetics', 'Medications used to prevent or alleviate nausea and vomiting.');");
-            }
+            // CATEGORIES table exists, no need to create
         } else {
-            // CREATE TABLE FOR categories  
-            echo "<h1>CATEGORIES TABLE NOT FOUND<br></h1>";
+            // CREATE TABLE FOR CATEGORIES
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
             echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
-            $pdo->exec("CREATE TABLE $categories_table 
-                        (categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                         categoryName VARCHAR(255) NOT NULL,
-                         categoryDescription VARCHAR(255) NOT NULL);");
-
-            // Insert categories and descriptions after creating the table
-            $pdo->exec("INSERT INTO $categories_table (categoryName, categoryDescription) VALUES 
-                        ('Analgesics', 'Medications that alleviate pain without causing loss of consciousness, including nonsteroidal anti-inflammatory drugs (NSAIDs) and opioids.'),
-                        ('Antibiotics', 'Drugs used to treat bacterial infections by inhibiting the growth of bacteria or killing them outright.'),
-                        ('Antidepressants', 'Medications primarily used to treat depression, but also used for other mood disorders and conditions like anxiety.'),
-                        ('Antihypertensives', 'Medications used to treat high blood pressure.'),
-                        ('Proton Pump Inhibitors (PPIs)', 'Medications used to reduce stomach acid production, commonly prescribed for acid reflux and peptic ulcers.'),
-                        ('Antidiabetic Agents', 'Medications used to manage blood sugar levels in individuals with diabetes.'),
-                        ('Anti-inflammatory Agents', 'Drugs that reduce inflammation, often used to treat conditions such as arthritis and inflammatory bowel disease.'),
-                        ('Anticoagulants/Antithrombotics', 'Medications used to prevent the formation of blood clots or to dissolve existing clots.'),
-                        ('Anticonvulsants', 'Medications used to prevent or control seizures in individuals with epilepsy or other seizure disorders.'),
-                        ('Antiemetics', 'Medications used to prevent or alleviate nausea and vomiting.');");
+            $pdo->exec("CREATE TABLE $categories_table (
+                category_id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                description TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
         }
-
         if ($result_products) {
-            // Products table exists, no need to create
+            // PRODUCTS table exists, no need to create
         } else {
-            // CREATE TABLE FOR PRODUCTS  
-            echo "<h1>PRODUCTS TABLE NOT FOUND<br></h1>";
+            // CREATE TABLE FOR PRODUCTS
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
             echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
-            $pdo->exec("CREATE TABLE $products_table 
-                        (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                        productName VARCHAR(255) NOT NULL,
-                        dosage INT(11) NOT NULL,
-                        dosageForm VARCHAR(255) NOT NULL,
-                        productPrice DECIMAL(10, 2) NOT NULL,
-                        productQuantity INT NOT NULL,
-                        productAddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        imagePath VARCHAR(255) NOT NULL,
-                        categoryID INT,
-                        FOREIGN KEY (categoryID) REFERENCES categories(categoryID)
-                        );");
+            $pdo->exec("CREATE TABLE $products_table
+            (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            productName VARCHAR(255) NOT NULL,
+            dosage INT(11) NOT NULL,
+            dosageForm VARCHAR(255) NOT NULL,
+            productPrice DECIMAL(10, 2) NOT NULL,
+            productQuantity INT NOT NULL,
+            productAddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            imagePath VARCHAR(255) NOT NULL,
+            category_id INT,
+            FOREIGN KEY (category_id) REFERENCES categories(category_id)
+            );");
         }
-        // START HERE: RENELL
-        // TABLE FOR PRODUCTS PAGE, CHECK FOR EXISTING PRODUCTS TABLE -> MAKE ONE IF NULL
-        // ADD INSERTION/DELETION OF PRODUCTS FILE in includes folder, MAKE SEPARATE PAGE for includes and the PAGE itself(the UI)
-        // ASK MO NALANG LYRA IF SYA GAGAWA DUN SA PAGE OR KUNG IKAW NALANG
+        if ($result_cart_items) {
+            // CART_ITEMS table exists, no need to create
+        } else {
+            // CREATE TABLE FOR CART_ITEMS
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $cart_items_table (
+                cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
+                session_id INT,
+                productID INT,
+                quantity INT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES shopping_sessions(session_id),
+                FOREIGN KEY (productID) REFERENCES products(productID)
+            );");
+        }
+        
+        if ($result_orders) {
+            // ORDERS table exists, no need to create
+        } else {
+            // CREATE TABLE FOR ORDERS
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $orders_table(
+                order_id INT AUTO_INCREMENT PRIMARY KEY,
+                userID INT,
+                total_amount DECIMAL(10, 2) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (userID) REFERENCES users(userID)
+            );");
+        }
+        
+        
+        if ($result_payment_details) {
+            // payment_details  table exists, no need to create
+        } else {
+            // CREATE TABLE FOR payment_details 
+            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $payment_details_table (
+                payment_id INT AUTO_INCREMENT PRIMARY KEY,
+                order_id INT,
+                payment_method VARCHAR(50) NOT NULL,
+                total_amount DECIMAL(10, 2) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (order_id) REFERENCES orders(order_id)
+            );");
+        }
+        if ($result_order_details) {
+            // Order details table already exists, no need to create
+        } else {
+            // CREATE TABLE FOR ORDER_DETAILS
+            echo "<h1>ORDER_DETAILS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $pdo->exec("CREATE TABLE $order_details_table (
+                order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
+                order_id INT,
+                productID INT,
+                quantity INT NOT NULL,
+                price DECIMAL(10, 2) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (order_id) REFERENCES orders(order_id),
+                FOREIGN KEY (productID) REFERENCES products(productID)
+            );");
+        }
 
+
+        
     } else {
         echo "<h1>DATABASE DOES NOT EXIST!</h1>";
         echo "<h1>CREATING ONE RIGHT NOW, PLEASE REFRESH THE PAGE</h1>";

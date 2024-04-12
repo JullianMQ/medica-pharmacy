@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $db_userName = "root";
     $db_pword = "";
     $db_name = "pharmacy"; // Database name
-    $table_name = "product"; // Table name
+    $table_name = "products"; // Table name
 
     try {
         require_once("dbh.inc.php");

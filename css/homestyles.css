@@ -96,7 +96,7 @@ p {
 .stars .fa{
 	color: #ff523b;
 }
-..feedback-container {
+.feedback-container {
      max-width: 900px; 
      margin: auto;
  }

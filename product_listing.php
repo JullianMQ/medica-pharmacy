@@ -59,7 +59,7 @@ require_once("includes/dbh.inc.php");
             $pdo->exec("USE $dbname");
 
             // SELECT data from the product table
-            $query = "SELECT * FROM product";
+            $query = "SELECT * FROM products";
             $statement = $pdo->prepare($query);
             $statement->execute();
 
