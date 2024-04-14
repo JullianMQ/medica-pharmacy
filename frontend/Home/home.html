@@ -32,10 +32,15 @@
 	</nav>
 	</div>
 	<script>
-  	$(".menu-btn").click(function(){
-  		$(".navbar .menu").toggleClass("active");
-  		$(".menu-btn i").toggleClass("active");
-  	});
+		document.addEventListener("DOMContentLoaded", function() {
+          const menuBtn = document.querySelector(".menu-btn");
+          const menu = document.querySelector(".navbar .menu");
+
+          menuBtn.addEventListener("click", function() {
+            menu.classList.toggle("active");
+            menuBtn.classList.toggle("active");
+          });
+        });
   </script>
 		<div class = "row">
 

@@ -24,7 +24,7 @@ body {
 }
 .navbar .menu li a{
 	display: block;
-	margin left: 29px;
+	margin-left: 29px;
 	color: black;
 	text-decoration: none;
 	font-size: 15px;
@@ -48,21 +48,23 @@ body {
 
 /*products*/
 .sec {
-	padding: 10px 5%;
+    padding: 10px 5%;
+    text-align: center; 
 }
 
 .products {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+
 .products .card {
-	width: 310px;
-	background: #F1F9FF;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-	border-radius: 5px;
-	padding: 5px;
-	margin-bottom: 20px;
-	
+    width: 90%; 
+    max-width: 320px; 
+    background: #F1F9FF;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 10px 20px;
 }
 
 .products .card img {
@@ -191,39 +193,42 @@ ul{
     width: 100%;
 }
 
-@media (max-width: 820px){
-	.menu-btn{
-		display:block;
-		z-index:999;
-	}
+@media (max-width: 820px) {
+  .menu-btn {
+    display: block;
+    z-index: 999;
+  }
 
-	.menu-btn i.active::before{
-		content:"\f00d";
-	}
+  .menu-btn i.active::before {
+    content: "\f00d";
+  }
 
-	.navbar .menu {
-		position: fixed;
-		height: 100vh;
-		width: 100%;
-		left: -100%;
-		top:0;
-		background-color: white;
-		text-align: center;
-		padding-top:80px;
-		transition: all 0.3s ease;
+  .navbar .menu {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    background-color: #E2FCD6;
+    text-align: center;
+    padding-top: 80px;
+    transition: all 0.3s ease;
+  }
 
-	}
-	.navbar .menu .active {
-		left: 0;
-	}
-	.navbar .menu li{
-		display: flex;
-		justify-content: center;
-	}
-	.navbar .menu li a{
-		margin: 10px 0;
-		font-size:20;
-	}
+  .navbar .menu.active {
+    left: 0;
+  }
+
+  .navbar .menu li {
+    display: block;
+    text-align: center; 
+  }
+
+  .navbar .menu li a {
+    margin: 10px auto; 
+    font-size: 15px; 
+      }
 }
+
 
 
