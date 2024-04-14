@@ -4,31 +4,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Medica Pharmacy </title>
-	<link rel="stylesheet" href="css/homestyles.css">
+	<link rel="stylesheet" href="homestyles.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
 
-	<div class = "header">
-	<div class = "container">
-		<div class="navbar">
+	<nav class = "navbar">
 
 		<div class="logo">
 			<img src="images/logo.png" width="125px">
 		</div>
 
 		<nav>
-			<ul>
-				<li><a href = "">Home</a></li>
-				<li><a href = "product_listing.php">Products</a></li>
-				<li><a href = "">About Us</a></li>
-				<li><a href = "">Contact Us</a></li>
-				<li><a href = ""><img src="images/cart.png" width="30px" height="30px"></a></li>
+			<ul class="menu">
+				<li><a href="../Home/home.html" class="active">Home</a></li>
+				<li><a href="../Products/products.html">Products</a></li>
+				<li><a href="../About/about.html">About Us</a></li>
+				<li><a href="../Contact/contact.html">Contact Us</a></li>
+				<li><a href="../Checkout/checkout.html"><i class="fas fa-shopping-cart"></i></a></li>
 			</ul>
+			<div class="menu-btn">
+				<i class="fa fa-bars"></i>
+			</div>	
 		</nav>
+	</nav>
 	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+          const menuBtn = document.querySelector(".menu-btn");
+          const menu = document.querySelector(".navbar .menu");
 
+          menuBtn.addEventListener("click", function() {
+            menu.classList.toggle("active");
+            menuBtn.classList.toggle("active");
+          });
+        });
+  </script>
 		<div class = "row">
 
 			<div class="col-2">
@@ -124,5 +137,48 @@
 		</div>
 	</div>
 	</div>
+	<footer class="footer">
+  	 <div class="cont">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>Contact Us</h4>
+  	 			<ul>
+  	 				<li><a href="#">Sto. Rosario Angeles Pampanga</a></li>
+  	 				<li><a href="#">+634789765245</a></li>
+  	 				<li><a href="#">medicaph@gmail.com</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">Orders</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Quick Links</h4>
+  	 		<ul>
+				<li><a href = "">Home</a></li>
+				<li><a href = "">Products</a></li>
+				<li><a href = "">About Us</a></li>
+				<li><a href = "">Contact Us</a></li>
+			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Stay Connected</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
 </body>
 </html>
