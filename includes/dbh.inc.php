@@ -99,13 +99,15 @@ try {
             // CATEGORIES table exists, no need to create
         } else {
             // CREATE TABLE FOR CATEGORIES
-            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
+            echo "<h1>CATEGORIES TABLE NOT FOUND<br></h1>";
             echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
+            $categories = array("Pain Relief", "Respiratory/Allergy", "Eye and Ear Care", "Foot and Leg Care", "Oral Care", "Digestion Care");
+            $category_values = "'" . implode("'),('", $categories) . "'";
             $pdo->exec("CREATE TABLE $categories_table (
                 category_id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(100) NOT NULL,
-                description TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
+                name VARCHAR(100) NOT NULL
+            );");
+            $pdo->exec("INSERT INTO $categories_table (name) VALUES ($category_values);");
         }
         if ($result_products) {
             // PRODUCTS table exists, no need to create
@@ -116,6 +118,7 @@ try {
             $pdo->exec("CREATE TABLE $products_table
             (productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             productName VARCHAR(255) NOT NULL,
+            productDesc TEXT NOT NULL,
             dosage INT(11) NOT NULL,
             dosageForm VARCHAR(255) NOT NULL,
             productPrice DECIMAL(10, 2) NOT NULL,

@@ -54,6 +54,8 @@
         <h2>Add New Product</h2>
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
+        <label for="productDesc">Description:</label>
+        <input type="text" id="productDesc" name="productDesc" required>
         <label for="dosage">Dosage:</label>
         <input type="number" id="dosage" name="dosage" min="0" required>
         <label for="dosageForm">Dosage Form:</label>
@@ -62,6 +64,16 @@
         <input type="number" id="productPrice" name="productPrice" step="0.01" min="0" required>
         <label for="productQuantity">Quantity:</label>
         <input type="number" id="productQuantity" name="productQuantity" min="0" required>
+        <label for="category">Category:</label>
+        <select id="category" name="category_id" required>
+            <option value="">Select Category</option>
+            <option value="1">Pain Relief</option>
+            <option value="2">Respiratory/Allergy</option>
+            <option value="3">Eye and Ear Care</option>
+            <option value="4">Foot and Leg Care</option>
+            <option value="5">Oral Care</option>
+            <option value="6">Digestion Care</option>
+        </select>
         <label for="imagePath">Select Image:</label>
         <input type="file" id="imagePath" name="imagePath" accept="image/*" required>
         <input type="submit" value="Add Product">

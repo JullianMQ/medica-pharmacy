@@ -17,15 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $pdo->exec("USE $db_name");
 
         // Prepare the SQL statement for inserting a new product
-        $insert_query = "INSERT INTO $table_name (productName, dosage, dosageForm, productPrice, productQuantity, imagePath) VALUES (?, ?, ?, ?, ?, ?)";
+        $insert_query = "INSERT INTO $table_name (productName, productDesc, dosage, dosageForm, productPrice, productQuantity, imagePath, category_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $pdo->prepare($insert_query);
 
         // Bind parameters
         $productName = $_POST['productName'];
+        $productDesc = $_POST['productDesc'];
         $dosage = $_POST['dosage'];
         $dosageForm = $_POST['dosageForm'];
         $productPrice = $_POST['productPrice'];
         $productQuantity = $_POST['productQuantity'];
+        $category_id = $_POST['category_id'];
+
 
         // Handle image upload
         $targetDirectory = "../images/uploads/"; // Directory where the image will be stored
@@ -46,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (move_uploaded_file($_FILES["imagePath"]["tmp_name"], $targetFile)) {
                 // File uploaded successfully, now insert data into database
                 $imagePath = $targetFile;
-                $stmt_insert->execute([$productName, $dosage, $dosageForm, $productPrice, $productQuantity, $imagePath]);
+                $stmt_insert->execute([$productName,$productDesc, $dosage, $dosageForm, $productPrice, $productQuantity,$imagePath, $category_id]);
                 header("Location: ../admin_product_management.php"); // Redirect back to the product management page
             } else {
                 echo "Sorry, there was an error uploading your file.";
