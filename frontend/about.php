@@ -23,7 +23,7 @@
 		<nav>
 			<ul class="menu">
 				<li><a href="home.php">Home</a></li>
-				<li><a href="products.php"">Products</a></li>
+				<li><a href="products.php">Products</a></li>
 				<li><a href=" about.php" class="active">About Us</a></li>
 				<li><a href="contact.php">Contact Us</a></li>
 				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>

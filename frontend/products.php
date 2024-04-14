@@ -65,7 +65,7 @@ require_once("../includes/dbh.inc.php");
 
             foreach ($products as $product) {
                 // Construct the correct image path
-                $imagePath = "images/uploads/" . basename($product['imagePath']);
+                $imagePath = "images/" . basename($product['imagePath']);
                 echo "
                 <div class='card'>
                 <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
