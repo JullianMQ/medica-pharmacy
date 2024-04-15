@@ -12,6 +12,19 @@ html {
     place-items: center;
 }
 
+#forgotPassword {
+    color: #1E80CE;
+    text-decoration: none;
+}
+
+.login-failed {
+    margin-top: 7em;
+}
+
+.error-message {
+    margin-bottom: 10em;
+}
+
 .custom-shape-divider-bottom-1711368160 {
     position: absolute;
     bottom: 0;
@@ -36,12 +49,14 @@ html {
 .title-header {
     display: flex;
     padding: .5rem;
+    margin-top: 2em;
     font-size: 2rem;
     font-weight: bolder;
 }
 
 .form-container {
-    padding: 1rem 4rem 2rem 4rem;
+    padding: 2rem 4rem 2rem 4rem;
+    margin-bottom: 10rem;
     display: flex;
     flex: 1;
     justify-content: center;
@@ -80,7 +95,7 @@ html {
     padding: 1rem 2rem;
     margin-top: 1rem;
     margin-bottom: .5rem;
-    background-color: #378BCB;
+    background-color: #0070C8;
     border: 0;
     border-radius: 5px;
     font-weight: bolder;

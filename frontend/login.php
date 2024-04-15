@@ -39,7 +39,7 @@
             <label for="userName" class="form-label">Enter your username</label>
             <input type="text" name="userName" placeholder="Username" class="form-text" id="userName" required onfocusout="check_user_input()">
 
-            <label for="userName" class="form-label">Enter your Password</label>
+            <label for="pword" class="form-label">Enter your Password</label>
             <input type="password" name="pword" placeholder="Password" required class="form-text">
             <!-- 
                 ADD A WAY TO CREATE A Forgot Password HERE
@@ -49,7 +49,7 @@
                             -> Redirect into page -> Page asks to input new password
                             -> It then updates the database to that password
             -->
-            <small><small> <a href="#todo" target="_blank">Forgot Password? Click here</a> </small></small>
+            <small><small> <a href="#todo" id="forgotPassword" target="_blank">Forgot Password? Click here</a> </small></small>
 
             <input type="submit" class="form-button" value="Log In">
         </div>

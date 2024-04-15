@@ -1,3 +1,6 @@
+<?php
+  include_once('../includes/config.inc.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -32,20 +35,6 @@
 			</div>
 		</nav>
 </nav>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const menuBtn = document.querySelector(".menu-btn");
-      const menu = document.querySelector("#menu");
-      const contactSection = document.querySelector(".container");
-
-      menuBtn.addEventListener("click", function () {
-        menu.classList.toggle("active");
-        menuBtn.classList.toggle("active");
-        contactSection.classList.toggle("active");
-      });
-    });
-  </script>
-  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
   <div class="container">
     <span class="big-circle"></span>
@@ -64,7 +53,7 @@
           </div>
           <div class="information">
             <img src="images/email.png" class="icon" alt="" />
-            <p>medicaofficial@gmaul.com</p>
+            <p>medicaofficial@gmail.com</p>
           </div>
           <div class="information">
             <img src="images/phone.png" class="icon" alt="" />
@@ -127,5 +116,4 @@
 	?>	
 
 </body>
-
 </html>

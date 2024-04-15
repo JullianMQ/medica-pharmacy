@@ -43,8 +43,8 @@
                 <label for="pword" class="form-label flex-fill">Enter your password</label>
                 <input type="password" name="pword" class="form-text" required placeholder="Password">
 
-                <label for="email" class="form-label">Enter your email</label>
-                <input type="email" name="email" class="form-text" required placeholder="email@example.com">
+                <label for="email" class="form-label" id="email_check" >Enter your email</label>
+                <input type="email" name="email" id="email" class="form-text" required placeholder="email@example.com">
                 <input type="submit" class="form-button" id="submitBtn" value="Signup">
             </div>
         </form>
@@ -57,7 +57,7 @@
         document.getElementById('userName').addEventListener('input', function() {
             let userName = this.value;
 
-            fetch('includes/check_username.inc.php', {
+            fetch('../includes/check_valid.inc.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -68,6 +68,27 @@
                 .then(data => {
                     document.getElementById('username_check').textContent = data;
                     if (data.trim() === 'Enter your username') {
+                        document.getElementById('submitBtn').disabled = false;
+                    } else {
+                        document.getElementById('submitBtn').disabled = true;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        })
+        document.getElementById('email').addEventListener('input', function() {
+            let email = this.value;
+
+            fetch('../includes/check_valid.inc.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'email=' + email
+                })
+                .then(response => response.text())
+                .then(data1 => {
+                    document.getElementById('email_check').textContent = data1;
+                    if (data1.trim() === 'Enter your email') {
                         document.getElementById('submitBtn').disabled = false;
                     } else {
                         document.getElementById('submitBtn').disabled = true;

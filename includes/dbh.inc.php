@@ -11,7 +11,6 @@ try {
     // CHECK EXISTING DATABASE
     $dbname = "pharmacy";
     $users_table = "users";
-    $shopping_sessions_table = "shopping_sessions";
     $cart_items_table = "cart_items";
     $products_table = "products";
     $categories_table = "categories";
@@ -33,11 +32,6 @@ try {
         $statement_users = $pdo->prepare($table_check_users);
         $statement_users->execute([$dbname, $users_table]);
         $result_users = $statement_users->fetch(PDO::FETCH_ASSOC);
-        //SHOPPING SESSIONS
-        $table_check_shopping_sessions = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
-        $statement_shopping_sessions = $pdo->prepare($table_check_shopping_sessions);
-        $statement_shopping_sessions->execute([$dbname, $shopping_sessions_table]);
-        $result_shopping_sessions = $statement_shopping_sessions->fetch(PDO::FETCH_ASSOC);
         //CART ITEMS
         $table_check_cart_items = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ? AND table_name = ? LIMIT 1";
         $statement_cart_items = $pdo->prepare($table_check_cart_items);
@@ -81,19 +75,6 @@ try {
                         userPass VARCHAR(255) NOT NULL,
                         userEmail VARCHAR(255) NOT NULL,
                         regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
-        }
-        if ($result_shopping_sessions) {
-            // SHOPPING_SESSIONS table exists, no need to create
-        } else {
-            // CREATE TABLE FOR SHOPPING_SESSIONS
-            echo "<h1>USERS TABLE NOT FOUND<br></h1>";
-            echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
-            $pdo->exec("CREATE TABLE $shopping_sessions_table (
-                session_id INT AUTO_INCREMENT PRIMARY KEY,
-                userID INT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (userID) REFERENCES users(userID)
-            );");
         }
         if ($result_categories) {
             // CATEGORIES table exists, no need to create
@@ -141,7 +122,6 @@ try {
                 productID INT,
                 quantity INT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (session_id) REFERENCES shopping_sessions(session_id),
                 FOREIGN KEY (productID) REFERENCES products(productID)
             );");
         }

@@ -1,3 +1,7 @@
+<?php
+	include_once('../includes/config.inc.php')
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +43,7 @@
 			<h1> Prescription for Wellness <br> Every Dose Counts. </h1>
 			<p> Your neighborhood pharmacy, dedicated to providing expert care and quality <br> medications to support
 				your health and well-being. </p>
-			<a href="products.html" class="btn"> View Products </a>
+			<a href="products.php" class="btn"> View Products </a>
 		</div>
 
 		<div class="col-2">
@@ -52,10 +56,10 @@
 	<div class="featured">
 		<div class="box">
 			<div class="collage">
-				<a href="products.html"> <img src="images/featured.png"> </a>
-				<a href="products.html"><img src="images/pain.png"></a>
-				<a href="products.html"><img src="images/oral.png"></a>
-				<a href="products.html"><img src="images/respi.png"></a>
+				<a href="products.php"> <img src="images/featured.png"> </a>
+				<a href="products.php"><img src="images/pain.png"></a>
+				<a href="products.php"><img src="images/oral.png"></a>
+				<a href="products.php"><img src="images/respi.png"></a>
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,6 @@
+<?php
+  include_once('../includes/config.inc.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,10 +16,6 @@
 
 <body>
 
-  <?php
-    include_once('../includes/navbar_inc.php');
-  ?>
-    
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const menuBtn = document.querySelector(".menu-btn");

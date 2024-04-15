@@ -1,3 +1,6 @@
+<?php
+	include_once('../includes/config.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +36,6 @@
 			</div>
 		</nav>
 	</nav>
-
 	<div class="container">
 		<div class="grid-row">
 			<div class="card">

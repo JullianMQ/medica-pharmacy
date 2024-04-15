@@ -10,16 +10,6 @@
 					</ul>
 				</div>
 				<div class="footer-col">
-					<h4>Help</h4>
-					<ul>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Orders</a></li>
-						<li><a href="#">returns</a></li>
-						<li><a href="#">order status</a></li>
-						<li><a href="#">payment options</a></li>
-					</ul>
-				</div>
-				<div class="footer-col">
 					<h4>Quick Links</h4>
 					<ul>
 						<li><a href="home.php" class="active">Home</a></li>

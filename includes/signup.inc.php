@@ -14,6 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $check_user->execute();
         $result = $check_user->fetchAll(PDO::FETCH_ASSOC);
 
+        // second checker for email, incase they bypass button disable through inspect browser devtools
+        $check_email = ("SELECT * FROM users WHERE userEmail = '$email';");
+        $check_user_email = $pdo->prepare($check_email);
+        $check_user_email->execute();
+        $result = $check_user_email->fetchAll(PDO::FETCH_ASSOC);
+
         if (empty($result)) {
             $options = [
                 'cost' => 12
@@ -35,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // if result is not empty then we deny their request to submit the data
             echo "Denied";
-            header("Location: ../login.php");
+            header("Location: ../frontend/login.php");
         }
 
         // free space
@@ -43,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement = null;
 
         // go to login form
-        header("Location: ../login.php");
+        header("Location: ../frontend/login.php");
 
         // cut connection
         die();
@@ -51,5 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("<h1>Something failed: </h1>" . $e->getMessage());
     }
 } else {
-    header("Location: ../signup.php");
+    header("Location: ../frontend/signup.php");
 }
