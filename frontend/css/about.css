@@ -1,3 +1,15 @@
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-profile > i {
+    padding-right: 1em;
+    color: #3A468D;
+}
+.user-icon {
+    color: #3A468D;
+}
 html {
     font-size: 16px;
 }

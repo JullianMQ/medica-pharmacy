@@ -1,11 +1,14 @@
-
-.row {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	padding-left: 25px;
-	justify-content: space-around;
-	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1)
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-profile > i {
+    padding-right: 1em;
+    color: #3A468D;
+}
+.user-icon {
+    color: #3A468D;
 }
 .row2 {
 	display: flex;
@@ -19,7 +22,7 @@
 	min-width: 300px;
 }
 .col-2 img {
-	max-width: 100%;
+	max-width: 75%;
 	padding: 50px 0;
 
 }

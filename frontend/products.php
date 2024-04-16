@@ -1,6 +1,6 @@
 <?php
-include_once('../includes/config.inc.php');
-include_once('../includes/dbh.inc.php');
+    include_once('../includes/config.inc.php');
+    include_once('../includes/dbh.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,20 +8,33 @@ include_once('../includes/dbh.inc.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Listing</title>
+    <title>Medica Pharmacy | Products</title>
     <link rel="stylesheet" href="css/productstyles.css">
-    <link rel="stylesheet" href="css/navbar_inc.css">
     <link rel="stylesheet" href="css/header_footer.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 <body>
-    <nav class="navbar">
 
-        <div class="logo">
-            <img src="images/logo.png" width="125px">
+<nav class="navbar">
+
+		<div class="logo">
+			<img src="images/logo.png" width="125px">
+		</div>
+
+        <div class="user-profile">
+            <i class="fa fa-regular fa-user"></i>
+                <h3> 
+                    <a href="login.php" class="user-icon">
+                        <?php 
+                            if (empty($_SESSION['userName'])) {
+                                echo "Guest";
+                            } else {
+                               echo $_SESSION['userName']; 
+                            }
+                        ?> 
+                    </a>
+                </h3>
         </div>
 
         <nav>

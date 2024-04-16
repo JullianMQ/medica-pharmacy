@@ -49,7 +49,7 @@
                             -> Redirect into page -> Page asks to input new password
                             -> It then updates the database to that password
             -->
-            <small><small> <a href="#todo" id="forgotPassword" target="_blank">Forgot Password? Click here</a> </small></small>
+            <small><small> <a href="signup.php" id="signup-link"> Don't Have an Account? Click here</a> </small></small>
 
             <input type="submit" class="form-button" value="Log In">
         </div>

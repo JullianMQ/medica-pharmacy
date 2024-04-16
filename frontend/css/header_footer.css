@@ -5,6 +5,14 @@
 	font-family: Arial, Helvetica, sans-serif;	
 }
 
+.row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding-left: 25px;
+	justify-content: space-around;
+}
+
 .navbar {
 	display: flex;
 	align-items: center;
