@@ -1,3 +1,7 @@
+<?php
+    include_once('../includes/config.inc.php');
+    include_once('../includes/dbh.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +46,10 @@
    </div>
 
    <div class="product-display">
-      <table class="product-display-table">
-         <thead>
+   <section class="sec">
+        <div class="products">
+        <table class="product-display-table">
+        <thead>
          <tr>
             <th>Product Image</th>
             <th>Product Name</th>
@@ -55,20 +61,57 @@
             <th>Action</th>
          </tr>
          </thead>
-         <tr>
-            <td><img src="uploaded_img/product_image.jpg" height="100" alt="Product Image"></td>
-            <td>Product Name</td>
-            <td> Description </td>
-            <td> Dosage </td>
-            <td> Form </td>
-            <td>100php</td>
-            <td> 5 </td>
+        <?php
+            // Database connection and product retrieval logic
+            try {
+                // Establish a connection to the database
+                $pdo = new PDO($server, $db_userName, $db_pword);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                // Specify the database name
+                $dbname = "pharmacy";
+
+                // Use the specified database
+                $pdo->exec("USE $dbname");
+
+                // SELECT data from the product table
+                $query = "SELECT * FROM products";
+                $statement = $pdo->prepare($query);
+                $statement->execute();
+
+                // Fetch all rows from the result set
+                $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                // Output the retrieved data
+
+                foreach ($products as $product) {
+                    // Construct the correct image path
+                    $imagePath = "../images/uploads/products/" . basename($product['imagePath']);
+                    echo "
+                    <tr>
+            <td><img src='{$imagePath}' height='100' alt='{$product['productName']}'></td>
+            <td>{$product['productName']}</td>
+            <td>{$product['productDesc']}</td>
+            <td>{$product['dosage']}</td>
+            <td>{$product['dosage']}</td>
+            <td>{$product['productPrice']}</td>
+            <td>{$product['productQuantity']}</td>
             <td>
-               <a href="#" class="btn"> <i class="fas fa-edit"></i> Edit </a>
-               <a href="#" class="btn"> <i class="fas fa-trash"></i> Delete </a>
+               <a href='#' class='btn'> <i class='fas fa-edit'></i> Edit </a>
+               <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
             </td>
          </tr>
-      </table>
+      </table>";              
+                }
+    
+            }catch (PDOException $e) {
+                echo "<p>Connection failed: " . $e->getMessage() . "</p>";
+            }
+        ?>
+        </div>
+   
+      <!-- 
+         
    </div>
 
 </div>
