@@ -1,10 +1,10 @@
-<html lang="en" class="">
+<html lang="en">
     <link type="text/css" id="dark-mode" rel="stylesheet" href="">
     <head>
         <link type="text/css" id="dark-mode" rel="stylesheet" href="">
 
         <meta charset="UTF-8">
-        <title>CodePen Demo</title>
+        <title>Admin | Dashboard</title>
 
         <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/adminpanel.css">
 
-        <!-- overlay -->
     </head>
+    <!-- overlay -->
     <body cz-shortcut-listen="true">
         <div id="sidebar-overlay" class="overlay w-100 vh-100 position-fixed d-none"></div>
 
