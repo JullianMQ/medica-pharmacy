@@ -15,6 +15,25 @@
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" width="125px">
+    </div>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.php">About Us</a></li>
+        <li><a href="contact.php" >Contact Us</a></li>
+        <li><a href="checkout.php" class="active"><i class="fas fa-shopping-cart"></i></a></li>
+      </ul>
+
+      <div class="menu-btn">
+        <i class="fa fa-bars"></i>
+      </div>
+    </nav>
+  </nav>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -28,29 +47,23 @@
         contactSection.classList.toggle("active");
       });
     });
-  </script>
-  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
-  
-
-  <script> const inputs = document.querySelectorAll(".input");
-
-    function focusFunc() {
-      let parent = this.parentNode;
-      parent.classList.add("focus");
-    }
-
-    function blurFunc() {
-      let parent = this.parentNode;
-      if (this.value == "") {
-        parent.classList.remove("focus");
+    const addCartHTML = () => {
+      listCartHTML.innerHTML = '';
+      if (carts.length > 0) {
+        carts.foreach(cart => {
+          let newCart = document.createElement('div');
+          newCart.classList.add('item');
+          newCart.innerHTML = 
+          "<div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>" +
+				  "<div class='desc'> {$product['productName']}</div>" +
+				  "<div class='title'> {$product['productDesc']}</div>" +
+          "<div class='price'>₱ {$product['productPrice']}</div>"
+        })
       }
     }
-
-    inputs.forEach((input) => {
-      input.addEventListener("focus", focusFunc);
-      input.addEventListener("blur", blurFunc);
-    }); </script>
+  </script>
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
 	<?php 
 		include_once('includes/footer_inc.php')
