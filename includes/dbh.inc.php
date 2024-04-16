@@ -118,7 +118,6 @@ try {
             echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
             $pdo->exec("CREATE TABLE $cart_items_table (
                 cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
-                session_id INT,
                 productID INT,
                 quantity INT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
