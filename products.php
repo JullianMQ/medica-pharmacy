@@ -78,7 +78,7 @@
 
                 foreach ($products as $product) {
                     // Construct the correct image path
-                    $imagePath = "images/" . basename($product['imagePath']);
+                    $imagePath = "images/uploads/products/" . basename($product['imagePath']);
                     echo "
                     <div class='card'>
                     <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
