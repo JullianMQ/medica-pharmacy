@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         // Handle image upload
-        $targetDirectory = "../frontend/images/"; // Directory where the image will be stored
+        $targetDirectory = "../images/"; // Directory where the image will be stored
 
         // Check if the directory exists, if not, create it
         if (!is_dir($targetDirectory)) {
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 // File uploaded successfully, now insert data into database
                 $imagePath = $targetFile;
                 $stmt_insert->execute([$productName,$productDesc, $dosage, $dosageForm, $productPrice, $productQuantity,$imagePath, $category_id]);
-                header("Location: ../admin_product_management.php"); // Redirect back to the product management page
+                header("Location: ../admin_panel/admin_product_management.php"); // Redirect back to the product management page
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
@@ -62,5 +62,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 } else {
     // Redirect if not a POST request
-    header("Location: ../admin_product_management.php");
+    header("Location: ../admin_panel/admin_product_management.php");
 }

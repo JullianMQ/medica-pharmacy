@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // if result is not empty then we deny their request to submit the data
             echo "Denied";
-            header("Location: ../frontend/login.php");
+            header("Location: ../login.php");
         }
 
         // free space
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement = null;
 
         // go to login form
-        header("Location: ../frontend/login.php");
+        header("Location: ../login.php");
 
         // cut connection
         die();
@@ -57,5 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("<h1>Something failed: </h1>" . $e->getMessage());
     }
 } else {
-    header("Location: ../frontend/signup.php");
+    header("Location: ../signup.php");
 }

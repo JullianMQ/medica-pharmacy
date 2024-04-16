@@ -1,0 +1,70 @@
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-profile > i {
+    padding-right: 1em;
+    color: #3A468D;
+}
+.user-icon {
+    color: #3A468D;
+}
+html {
+    font-size: 16px;
+}
+.container {
+    justify-content: center;
+    height: 100% ;
+    padding: 1em;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    padding: 5em;
+}
+
+.card {
+    background: #F1F9FF;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 1em;
+    margin: 0 10px 20px;
+}
+
+.heading {
+    color: #14967F;
+    padding: 0 15px;
+}
+
+.content {  
+    line-height: 1.5em;
+    padding: 1em;
+}
+
+.listing {
+    line-height: 2em;
+    padding: 1em;
+}
+
+@media screen and (max-width: 920px) {
+    .grid-row {
+        display: flex;
+        flex-direction: column;
+    }
+    .card {
+        padding-bottom: 5em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .grid-row {
+        padding: 1em;
+    }
+}

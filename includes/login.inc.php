@@ -17,16 +17,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         if (empty($results)) {
-            header("Location: ../frontend/error_login.php");
+            header("Location: ../error_login.php");
         } else {
             foreach ($results as $row) {
                 if (!password_verify($pword, $row['userPass'])) {
-                    header("Location: ../frontend/error_login.php");
+                    header("Location: ../error_login.php");
                 } else {
                     // TODO:
                     // REDIRECT INTO LANDING PAGE OR PREVIOUS PAGE
                     $_SESSION['userName'] = $row['userName'];
-                    header("Location: ../frontend/products.php");
+                    header("Location: ../products.php");
                 }
             }
         }
@@ -39,5 +39,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         die("<h1>Something failed:</h1> " . $e->getMessage());
     }
 } else {
-    header("Location: ../frontend/login.php");
+    header("Location: ../login.php");
 }

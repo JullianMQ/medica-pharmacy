@@ -50,7 +50,7 @@
     <h1>Admin Product Management</h1>
     
     <!-- Product Insertion Form -->
-    <form action="includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
+    <form action="../includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
         <h2>Add New Product</h2>
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
@@ -80,7 +80,7 @@
     </form>
 
     <!-- Product Deletion Form -->
-    <form action="includes/delete_product.inc.php" method="post">
+    <form action="../includes/delete_product.inc.php" method="post">
         <h2>Delete Product</h2>
         <label for="productId">Product ID:</label>
         <input type="number" id="productId" name="productId" min="1" required>
