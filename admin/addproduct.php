@@ -4,23 +4,23 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Admin | Add Product/s</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin | Add Product/s</title>
 
-   
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <link rel="stylesheet" href="css/addproduct.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-</head>
-<body>
-   
-<div class="container">
+        <link rel="stylesheet" href="css/addproduct.css">
 
-   <div class="admin-product-form-container">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="admin-product-form-container">
 
       <form action="addproduct.php" method="post" enctype="multipart/form-data">
          <h3>Add a New Product</h3>
@@ -43,7 +43,7 @@
          <input type="submit" class="btn" name="add_product" value="Add Product">
       </form>
 
-   </div>
+            </div>
 
    <div class="product-display">
    <section class="sec">
