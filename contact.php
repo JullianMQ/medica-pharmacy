@@ -30,7 +30,7 @@
                             if (empty($_SESSION['userName'])) {
                                 echo "Guest";
                             } else {
-                               echo $_SESSION['userName']; 
+                                echo $_SESSION['userName']; 
                             }
                         ?> 
                     </a>
