@@ -25,17 +25,19 @@ try {
             <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
             <div class='desc'> {$product['productName']}</div>
             <div class='title'> {$product['productDesc']}</div>
-            <button id='increment' onclick='increment()'>+</button>
-            <button id='decrement' onclick='decrement()'>-</button>
-            <form action='includes/insert_cart.inc.php' method='post'>
-                <div class='box'>
-                    <div class='price'> ₱ {$product['productPrice']} </div>
-                    <input type='hidden' name='productID' value='{$product['productID']}'>
-                    <input type='number' id='quantity' name='quantity' value='1' min='1' max='{$product['productQuantity']}'>
-                    ";
-        checkIfLoggedIn();
-        echo "      </div>
-            </form>
+            <div class='box'>
+                <div class='qty-btn'>
+                    <button id='decrement' onclick='decrement()'>-</button>
+                    <button id='increment' onclick='increment()'>+</button>
+                </div>
+                <form action='includes/insert_cart.inc.php' method='post' class='form'>
+                        <input type='number' id='quantity' name='quantity' value='1' min='1' max='{$product['productQuantity']}'>
+                        <div class='price'> ₱ {$product['productPrice']} </div>
+                        <input type='hidden' name='productID' value='{$product['productID']}'>          
+                        ";
+            checkIfLoggedIn();
+            echo "  </form>     
+                </div>    
         </div>
 
         <script>

@@ -78,16 +78,19 @@ body {
 	padding: 0 20px;
 }
 .products .card .box .price{
+	grid-column: 4;
+	grid-row: 1;
 	color:#0B8973;
 	font-size: 20px;
 	font-weight:bold;
 }
 .products .card .box {
+	position: relative;
 	display: flex;
-  flex-direction: row;
-	justify-content: space-between;
+	justify-content:baseline;
 	align-items: center;
-	margin: 5px 10px;
+	margin: 5px;
+	width: 300px;
 }
 .products .card .box .btn{
 	font-size: 15px;
@@ -102,38 +105,49 @@ body {
     display: flex; 
     justify-content: center;
     align-items: center;
+	grid-column: 3;
+	grid-row: 2;
 }
 .qty-btn{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 35px;
+	position: absolute;
+	left: 25px;
+	top: 0;
+	height: 30px;
 	border: 1px solid #0B8973;
 	border-radius: 20px;
-	width: 6.5em;
+	width: 100px;
+	z-index: 998;
 }
-.inc-btn, .dec-btn{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+#increment, #decrement{
+	position: absolute;
 	font-size: 15px;
-	height: 35px;
-	width: 35px;
-	padding: 10px 10px;
+	height: 20px;
+	width: 30px;
+	padding: 2px;
 	margin: 0;
 	font-weight: 900;
-	font-family: serif;
 	border: none;
 	background-color: transparent;
+	z-index: 999;
 }
-.qty-input{
-	margin: 0;
-	padding: 0;
-	height: 30px;
-	width: 40px;
+#decrement{left:2px;}
+#increment{right:2px;}
+#quantity{
 	text-align: center;
-	border: none;
-	background-color: transparent;
+	grid-column: 2;
+	grid-row: 1;
+	width: 40px;
+	height: 30px;
+	background: #F1F9FF;
+	border-style: none;
+}
+form.form{
+	display: grid;
+	align-items: start;
+	grid-template-columns: 20px 120px 20px 120px 20px;
+	grid-template-rows: 40px 40px;
+	width: 200px;
+	justify-items: center;
 }
 .products .card .box .btn:hover{
 	cursor: pointer;
@@ -186,5 +200,9 @@ right: 4.4%;
   .navbar .menu li a {
     margin: 10px auto; 
     font-size: 15px; 
-      }
+   }
+   form.form{
+	min-width: 320px;
+	grid-template-columns: (3, 100px);
+	}
 }
