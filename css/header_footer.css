@@ -35,6 +35,10 @@
 	font-size: 15px;
 }
 
+#sign-out {
+	font-size: 17px;
+}
+
 .navbar .menu li .active {
 	border-bottom: 2px solid black;
 }
