@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         require_once("dbh.inc.php");
         require_once("config.inc.php");
 
-        $user_check = ("SELECT userName, userPass FROM users WHERE userName LIKE '$userName';");
+        $user_check = ("SELECT userName, userPass, userID FROM users WHERE userName LIKE '$userName';");
 
         // user check
         $statement = $pdo->prepare($user_check);
@@ -23,8 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 if (!password_verify($pword, $row['userPass'])) {
                     header("Location: ../error_login.php");
                 } else {
-                    // TODO:
-                    // REDIRECT INTO LANDING PAGE OR PREVIOUS PAGE
+                    $_SESSION['userID'] = $row['userID'];
                     $_SESSION['userName'] = $row['userName'];
                     header("Location: ../products.php");
                 }

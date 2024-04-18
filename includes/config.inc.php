@@ -19,17 +19,17 @@ session_set_cookie_params([
 
 session_start();
 
-if (!isset($_SESSION['last_regeneration'])) {
-    session_regenerate_id(true);
-    $_SESSION['last_regeneration'] = time();
-} else {
+// if (!isset($_SESSION['last_regeneration'])) {
+//     session_regenerate_id(true);
+//     $_SESSION['last_regeneration'] = time();
+// } else {
     
-    // regenerate ID every day
-    // 60 = seconds, 1440 = minutes = 1 day
-    $interval = 60 * 1440;
+//     // regenerate ID every day
+//     // 60 = seconds, 1440 = minutes = 1 day
+//     $interval = 60 * 1440;
     
-    if (time() - $_SESSION['last_regeneration'] >= $interval) {
-        session_regenerate_id(true);   
-        $_SESSION['last_regeneration'] = time();
-    }
-}
+//     if (time() - $_SESSION['last_regeneration'] >= $interval) {
+//         session_regenerate_id(true);   
+//         $_SESSION['last_regeneration'] = time();
+//     }
+// }

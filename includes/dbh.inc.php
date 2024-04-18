@@ -18,6 +18,7 @@ try {
     $order_details_table = "order_details";
     $payment_details_table = "payment_details";
 
+    // Query to select schema names from the INFORMATION_SCHEMA.SCHEMATA table
     $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?;";
     $statement = $pdo->prepare($query);
     $statement->execute([$dbname]);
@@ -118,10 +119,12 @@ try {
             echo "<h1>CREATING ONE NOW, PLEASE REFRESH</h1>";
             $pdo->exec("CREATE TABLE $cart_items_table (
                 cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
+                userID INT NOT NULL,
                 productID INT,
                 quantity INT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (productID) REFERENCES products(productID)
+                FOREIGN KEY (productID) REFERENCES products(productID),
+                FOREIGN KEY (userID) REFERENCES users(userID)
             );");
         }
         
@@ -185,4 +188,3 @@ try {
 } catch (PDOException $e) {
     echo "<h1>Connection failed: </h1>" . $e->getMessage();
 }
-?>
