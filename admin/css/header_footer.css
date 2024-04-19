@@ -12,6 +12,7 @@
 
 .user-icon {
     color: #3A468D;
+	text-transform: capitalize;
 }
 
 * {

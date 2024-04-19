@@ -119,7 +119,7 @@
                                     <td>{$product['dosageForm']}</td>
                                     <td>{$product['productPrice']}</td>
                                     <td>{$product['productQuantity']}</td>
-                                    <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
+                                    <td><a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a></td>
                                     </td>
                                     </tr>";
                             }
