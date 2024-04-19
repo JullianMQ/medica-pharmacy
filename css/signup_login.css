@@ -100,16 +100,22 @@ html {
     border-radius: 5px;
     font-weight: bolder;
     color: #F1F9FF;
-
-
 }
 
 @media screen and (max-width: 430px){
+    .container {
+        padding: 0;
+    }
     html {
         font-size: 14px;
     }
+    .form {
+        margin: 0;
+    }
     .form-container {
-        padding: .5rem 1rem .5rem 1rem;
+        padding: .5rem 1rem;
+        margin: 0 0 10rem 0;
+        width: 75dvw;
     }
 }
 

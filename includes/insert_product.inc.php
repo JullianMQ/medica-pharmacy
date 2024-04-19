@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         // Handle image upload
-        $targetDirectory = "../images/"; // Directory where the image will be stored
+        $targetDirectory = "../images/uploads/products/"; // Directory where the image will be stored
 
         // Check if the directory exists, if not, create it
         if (!is_dir($targetDirectory)) {

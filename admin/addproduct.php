@@ -116,10 +116,10 @@ include_once('../includes/dbh.inc.php');
                                     <td>{$product['dosageForm']}</td>
                                     <td>{$product['productPrice']}</td>
                                     <td>{$product['productQuantity']}</td>
-                                    <a href='#' class='btn'> <i class='fas fa-edit'></i> Edit </a>
+                                    <td>
                                     <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
                                     </td>
-                                    </tr>
+                                    </tr> 
                                     </table>";
                             }
                         } catch (PDOException $e) {
