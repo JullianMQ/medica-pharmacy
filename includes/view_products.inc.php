@@ -25,6 +25,7 @@ try {
             <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
             <div class='desc'> {$product['productName']}</div>
             <div class='title'> {$product['productDesc']}</div>
+<<<<<<< HEAD
             <button id='increment' onclick='increment()'>+</button>
             <button id='decrement' onclick='decrement()'>-</button>
             <form action='includes/insert_cart.inc.php' method='post'>
