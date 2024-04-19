@@ -1,6 +1,9 @@
 <?php
-include_once('../includes/config.inc.php');
-include_once('../includes/dbh.inc.php');
+    include_once('../includes/config.inc.php');
+    include_once('../includes/dbh.inc.php');
+    if (!isset($_SESSION['userName'])) {
+        header("Location: ../admin/admin_login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +33,7 @@ include_once('../includes/dbh.inc.php');
             <div class="user-profile">
                 <i class="fa fa-regular fa-user"></i>
                 <h3>
-                    <a href="../login.php" class="user-icon">
+                        <a href="admin_login.php" class="user-icon">
                         <?php
                         echo $_SESSION['userName'];
                         ?>
@@ -40,10 +43,10 @@ include_once('../includes/dbh.inc.php');
 
             <nav>
                 <ul class="menu">
-                    <li><a href="adminpanel.php">Dashboard</a></li>
+                    <li><a href="index.php">Dashboard</a></li>
                     <li><a href="addproduct.php" class="active">Products</a></li>
-                    <li><a href="users.php">Users</a></li>
-                    <li><a href="../logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
+                    <li><a href="index.php">Users</a></li>
+                    <li><a href="admin_logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
                 </ul>
                 <div class="menu-btn">
                     <i class="fa fa-bars"></i>
@@ -116,16 +119,16 @@ include_once('../includes/dbh.inc.php');
                                     <td>{$product['dosageForm']}</td>
                                     <td>{$product['productPrice']}</td>
                                     <td>{$product['productQuantity']}</td>
-                                    <td>
                                     <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
                                     </td>
                                     </tr> 
-                                    </table>";
+                                    ";
                             }
                         } catch (PDOException $e) {
                             echo "<p>Connection failed: " . $e->getMessage() . "</p>";
                         }
                         ?>
+                    </table>
                 </div>
 
         </div>
@@ -195,7 +198,7 @@ include_once('../includes/dbh.inc.php');
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-2e3ee716-3349-8656-638e-37e7358fa342" crossorigin=""></script>
-    <script src="javascript/adminpanel.js"></script>
+    <script src="javascript/index.js"></script>
 
 </body>
 
