@@ -30,7 +30,7 @@ include_once('../includes/dbh.inc.php');
             <div class="user-profile">
                 <i class="fa fa-regular fa-user"></i>
                 <h3>
-                    <a href="login.php" class="user-icon">
+                    <a href="../login.php" class="user-icon">
                         <?php
                         echo $_SESSION['userName'];
                         ?>
@@ -52,7 +52,7 @@ include_once('../includes/dbh.inc.php');
         </nav>
         <div class="admin-product-form-container">
 
-            <form action="addproduct.php" method="post" enctype="multipart/form-data">
+            <form action="../includes/insert_product.inc.php" method="post" enctype="multipart/form-data">
                 <h3>Add a New Product</h3>
                 <input type="text" placeholder="Enter product name" name="productName" class="box" required>
                 <input type="text" placeholder="Enter product description" name="productDesc" class="box" required>
@@ -113,10 +113,9 @@ include_once('../includes/dbh.inc.php');
                                     <td>{$product['productName']}</td>
                                     <td>{$product['productDesc']}</td>
                                     <td>{$product['dosage']}</td>
-                                    <td>{$product['dosage']}</td>
+                                    <td>{$product['dosageForm']}</td>
                                     <td>{$product['productPrice']}</td>
                                     <td>{$product['productQuantity']}</td>
-                                    <td>
                                     <a href='#' class='btn'> <i class='fas fa-edit'></i> Edit </a>
                                     <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
                                     </td>

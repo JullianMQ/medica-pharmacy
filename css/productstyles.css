@@ -132,7 +132,7 @@ body {
 }
 #decrement{left:2px;}
 #increment{right:2px;}
-#quantity{
+.quantity{
 	text-align: center;
 	grid-column: 2;
 	grid-row: 1;
@@ -147,6 +147,7 @@ form.form{
 	grid-template-columns: 20px 120px 20px 120px 20px;
 	grid-template-rows: 40px 40px;
 	width: 200px;
+	z-index: 1;
 	justify-items: center;
 }
 .products .card .box .btn:hover{
@@ -155,7 +156,7 @@ form.form{
 	color: #14967F;
 }
 .products .card :hover{
-  cursor: pointer;
+	cursor: pointer;
 }
 .cart-icon span{
 display: flex;

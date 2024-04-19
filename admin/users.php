@@ -26,7 +26,7 @@
             <div class="user-profile">
                 <i class="fa fa-regular fa-user"></i>
                     <h3> 
-                        <a href="login.php" class="user-icon">
+                        <a href="../login.php" class="user-icon">
                             <?php 
                                 echo $_SESSION['userName']; 
                             ?> 
