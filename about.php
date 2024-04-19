@@ -18,8 +18,7 @@
 	<nav class="navbar">
 
 		<div class="logo">
-			<img src="images/logo.png" width="125px">
-		</div>
+			<img src="images/logo.png" width="125px"> </div>
 
         <div class="user-profile">
             <i class="fa fa-regular fa-user"></i>
@@ -29,7 +28,7 @@
                             if (empty($_SESSION['userName'])) {
                                 echo "Guest";
                             } else {
-                               echo $_SESSION['userName']; 
+								echo $_SESSION['userName']; 
                             }
                         ?> 
                     </a>
@@ -38,10 +37,11 @@
 
 		<nav>
 			<ul class="menu">
-				<li><a href="index.php">Home</a></li>
+				<li><a href="index.php" >Home</a></li>
 				<li><a href="products.php">Products</a></li>
-				<li><a href=" about.php" class="active">About Us</a></li>
+				<li><a href="about.php" class="active">About Us</a></li>
 				<li><a href="contact.php">Contact Us</a></li>
+				<li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
 				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
 			</ul>
 			<div class="menu-btn">

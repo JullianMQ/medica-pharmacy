@@ -18,8 +18,7 @@
 <body>
 
 <nav class="navbar">
-
-		<div class="logo">
+<div class="logo">
 			<img src="images/logo.png" width="125px">
 		</div>
 
@@ -44,6 +43,7 @@
 				<li><a href="products.php">Products</a></li>
 				<li><a href="about.php">About Us</a></li>
 				<li><a href="contact.php">Contact Us</a></li>
+				<li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
 				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
 			</ul>
 			<div class="menu-btn">

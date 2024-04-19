@@ -31,23 +31,26 @@ try {
                 <div class='box'>
                     <div class='price'> ₱ {$product['productPrice']} </div>
                     <input type='hidden' name='productID' value='{$product['productID']}'>
-                    <input type='number' id='quantity' name='quantity' value='1' min='1' max='{$product['productQuantity']}'>
+                    <input type='number' id='quantity{$product['productID']}' name='quantity' value='1' min='1' max='{$product['productQuantity']}'>
                     ";
         checkIfLoggedIn();
         echo "      </div>
             </form>
         </div>
+        
+        
 
         <script>
-            function increment() {
-                var input = document.getElementById('quantity');
+            let quantVar = quantity{$product['productID']};
+            function increment(quantity{$product['productID']}) {
+                var input = document.getElementById('quantity{$product['productID']}');
                 if (parseInt(input.value) < {$product['productQuantity']}) {
                     input.value = parseInt(input.value) + 1;
                 }
             }
 
-            function decrement() {
-                var input = document.getElementById('quantity');
+            function decrement(quantity{$product['productID']}) {
+                var input = document.getElementById('quantity{$product['productID']}');
                 if (parseInt(input.value) > 1) {
                     input.value = parseInt(input.value) - 1;
                 }

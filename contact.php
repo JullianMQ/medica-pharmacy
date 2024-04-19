@@ -1,5 +1,5 @@
 <?php
-include_once('includes/config.inc.php');
+  include_once('includes/config.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +18,7 @@ include_once('includes/config.inc.php');
 <body>
 
   <nav class="navbar">
-
-    <div class="logo">
+<div class="logo">
       <img src="images/logo.png" width="125px">
     </div>
 
@@ -38,18 +37,19 @@ include_once('includes/config.inc.php');
       </h3>
     </div>
 
-    <nav>
-      <ul class="menu">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Products</a></li>
-        <li><a href="about.php">About Us</a></li>
-        <li><a href="contact.php" class="active">Contact Us</a></li>
-        <li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
-      </ul>
-      <div class="menu-btn">
-        <i class="fa fa-bars"></i>
-      </div>
-    </nav>
+		<nav>
+			<ul class="menu">
+				<li><a href="index.php" >Home</a></li>
+				<li><a href="products.php">Products</a></li>
+				<li><a href="about.php">About Us</a></li>
+				<li><a href="contact.php" class="active">Contact Us</a></li>
+				<li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
+				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
+			</ul>
+			<div class="menu-btn" onclick="clearOpac()">
+				<i class="fa fa-bars"></i>
+			</div>
+		</nav>
   </nav>
 
   <div class="container">
@@ -124,6 +124,22 @@ include_once('includes/config.inc.php');
       input.addEventListener("focus", focusFunc);
       input.addEventListener("blur", blurFunc);
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuBtn = document.querySelector(".menu-btn");
+      const menu = document.querySelector("#menu");
+      const contactSection = document.querySelector(".container");
+
+      menuBtn.addEventListener("click", function() {
+        menu.classList.toggle("active");
+        menuBtn.classList.toggle("active");
+        contactSection.classList.toggle("active");
+      });
+    });
+    const clearOpac = () => {
+      const container = document.querySelector('.container');
+      container.style.opacity = '0';
+    }
   </script>
 
   <?php
@@ -131,5 +147,4 @@ include_once('includes/config.inc.php');
   ?>
 
 </body>
-
 </html>

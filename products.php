@@ -18,8 +18,7 @@
     <nav class="navbar">
 
         <div class="logo">
-            <img src="images/logo.png" width="125px">
-        </div>
+            <img src="images/logo.png" width="125px"> </div>
 
         <div class="user-profile">
             <i class="fa fa-regular fa-user"></i>
@@ -36,18 +35,19 @@
             </h3>
         </div>
 
-        <nav>
-            <ul class="menu">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="products.php" class="active">Products</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
-                <li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fa fa-bars"></i>
-            </div>
-        </nav>
+		<nav>
+			<ul class="menu">
+				<li><a href="index.php" >Home</a></li>
+				<li><a href="products.php" class="active">Products</a></li>
+				<li><a href="about.php">About Us</a></li>
+				<li><a href="contact.php">Contact Us</a></li>
+				<li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
+				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
+			</ul>
+			<div class="menu-btn">
+				<i class="fa fa-bars"></i>
+			</div>
+		</nav>
     </nav>
 
     <section class="sec">
