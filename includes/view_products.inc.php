@@ -50,11 +50,11 @@ try {
             <div class='title'> {$product['productDesc']}</div>
             <div class='box'>
                 <div class='qty-btn'>
-                    <button onclick='decrement(\"quantity{$db_prodID}\")'>-</button>
-                    <button onclick='increment(\"quantity{$db_prodID}\", {$db_quant})'>+</button>
+                    <button class='decrement' onclick='decrement(\"quantity{$db_prodID}\")'>-</button>
+                    <button class='increment'onclick='increment(\"quantity{$db_prodID}\", {$db_quant})'>+</button>
                 </div>
                 <form action='includes/insert_cart.inc.php' method='post' class='form'>
-                    <input type='number' class='quantity' id='quantity{$db_prodID}' name='quantity{$db_prodID}' value='1' min='1' max='$db_quant'>
+                    <input type='text' inputmode='numeric' class='quantity' id='quantity{$db_prodID}' name='quantity{$db_prodID}' value='1' min='1' max='$db_quant'>
                     <div class='price'> ₱ {$db_prodPrice} </div>
                     <input type='hidden' name='productID' value='{$db_prodID}'>          
                     ";
