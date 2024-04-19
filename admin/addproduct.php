@@ -121,8 +121,7 @@
                                     <td>{$product['productQuantity']}</td>
                                     <a href='#' class='btn'> <i class='fas fa-trash'></i> Delete </a>
                                     </td>
-                                    </tr> 
-                                    ";
+                                    </tr>";
                             }
                         } catch (PDOException $e) {
                             echo "<p>Connection failed: " . $e->getMessage() . "</p>";
@@ -130,7 +129,7 @@
                         ?>
                     </table>
                 </div>
-
+            </section>
         </div>
 
     </div>
