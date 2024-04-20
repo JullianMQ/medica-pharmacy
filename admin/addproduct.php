@@ -3,7 +3,13 @@
     include_once('../includes/dbh.inc.php');
     if (!isset($_SESSION['userName'])) {
         header("Location: ../admin/admin_login.php");
-    }
+        exit(); 
+    } elseif ($_SESSION['userName'] !== 'admin') {
+        session_unset(); 
+        session_destroy(); 
+        header("Location: ../admin/admin_login.php");
+        exit(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

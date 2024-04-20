@@ -1,6 +1,9 @@
 <?php
   include_once('includes/config.inc.php');
   include_once('includes/dbh.inc.php');
+  if (empty($_SESSION['userName'])) {
+    header("Location: login.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,13 +57,8 @@
   <section class="sec">
     <div class="cartlist">
       <?php
-      include_once('includes/view_cart_items.inc.php');
+        include_once('includes/view_cart_items.inc.php');
       ?>
-    <div class="checkout">
-      <form action="includes/buy_product.inc.php">
-        <button type="submit" class="buy-product">Buy products</button>
-      </form>
-    </div>
     </div>
   </section>
 
