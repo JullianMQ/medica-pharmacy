@@ -1,5 +1,5 @@
 <?php
-  include_once('includes/config.inc.php');
+include_once('includes/config.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 <body>
 
   <nav class="navbar">
-<div class="logo">
+    <div class="logo">
       <img src="images/logo.png" width="125px">
     </div>
 
@@ -37,19 +37,19 @@
       </h3>
     </div>
 
-		<nav>
-			<ul class="menu">
-				<li><a href="index.php" >Home</a></li>
-				<li><a href="products.php">Products</a></li>
-				<li><a href="about.php">About Us</a></li>
-				<li><a href="contact.php" class="active">Contact Us</a></li>
-				<li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
-				<li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
-			</ul>
-			<div class="menu-btn" onclick="clearOpac()">
-				<i class="fa fa-bars"></i>
-			</div>
-		</nav>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.php">About Us</a></li>
+        <li><a href="contact.php" class="active">Contact Us</a></li>
+        <li><a href="logout.php"><i class="fas fa-sign-out-alt" id="sign-out"></i></a></li>
+        <li><a href="checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
+      </ul>
+      <div class="menu-btn" onclick="toggleOpac()">
+        <i class="fa fa-bars"></i>
+      </div>
+    </nav>
   </nav>
 
   <div class="container">
@@ -136,9 +136,15 @@
         contactSection.classList.toggle("active");
       });
     });
-    const clearOpac = () => {
+    const toggleOpac = () => {
       const container = document.querySelector('.container');
-      container.style.opacity = '0';
+      const currentOpac = parseFloat(container.style.opacity);
+
+      if (currentOpac === 1 || isNaN(currentOpac)) {
+        container.style.opacity = '0';
+      } else {
+        container.style.opacity = '1';
+      }
     }
   </script>
 
@@ -147,4 +153,5 @@
   ?>
 
 </body>
+
 </html>

@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 return $quantity_to_add;
             }
         }
-
         $check_query = "SELECT * FROM cart_items WHERE productID = ? AND userID = ?;";
         $stmt_check = $pdo->prepare($check_query);
         $stmt_check->execute([$productID, $_SESSION['userID']]);

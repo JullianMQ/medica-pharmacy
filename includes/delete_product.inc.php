@@ -8,6 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         require_once("dbh.inc.php");
+        require_once("config.inc.php");
         // Establish a connection to the database
         $pdo = new PDO($server, $db_userName, $db_pword);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
