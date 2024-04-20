@@ -23,17 +23,15 @@ try {
         $db_quant = $product['productQuantity'];
         $db_prodID = $product['productID'];
         $db_prodPrice = $product['productPrice'];
-        $imagePath = "images/" . basename($product['imagePath']);
+        $imagePath = "images/uploads/products/" . basename($product['imagePath']);
         echo "
         <div class='card'>
             <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
             <div class='desc'> {$product['productName']}</div>
             <div class='title'> {$product['productDesc']}</div>
             <div class='box'>
-                <div class='qty-btn'>
                     <button id='decrement' onclick='decrement(quantity{$db_prodID})'>-</button>
                     <button id='increment' onclick='increment(quantity{$db_prodID}, {$db_quant})'>+</button>
-                </div>
                 <form action='includes/insert_cart.inc.php' method='post' class='form'>
                         <input type='number' class='quantity' id='quantity{$db_prodID}' name='quantity' value='1' min='1' max='$db_quant'>
                         <div class='price'> ₱ {$db_prodPrice} </div>
