@@ -108,31 +108,28 @@ body {
 	grid-column: 3;
 	grid-row: 2;
 }
-.qty-btn{
-	position: absolute;
-	left: 25px;
-	top: 0;
-	height: 30px;
-	border: 1px solid #0B8973;
-	border-radius: 20px;
-	width: 100px;
-	z-index: 998;
-}
+
 #increment, #decrement{
+	border: 1px solid #0B8973;
+	color: white;
+	border-radius: 20px;
 	position: absolute;
 	font-size: 15px;
-	height: 20px;
+	height: 30px;
 	width: 30px;
 	padding: 2px;
 	margin: 0;
 	font-weight: 900;
 	border: none;
-	background-color: transparent;
-	z-index: 999;
+	background-color: #0B8973;
+	z-index: 2;
+	top:0;
 }
-#decrement{left:2px;}
-#increment{right:2px;}
+#decrement{left:1em;}
+#increment{left:6em;}
 .quantity{
+	position: absolute;
+	left:3em;
 	text-align: center;
 	grid-column: 2;
 	grid-row: 1;
@@ -140,6 +137,7 @@ body {
 	height: 30px;
 	background: #F1F9FF;
 	border-style: none;
+	z-index: 3;
 }
 form.form{
 	display: grid;
