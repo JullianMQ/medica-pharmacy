@@ -10,6 +10,7 @@ function checkIfLoggedIn()
 
 try {
     // SELECT data from the product table
+    include_once('dbh.inc.php');
     $query = "SELECT * FROM products";
     $statement = $pdo->prepare($query);
     $statement->execute();
