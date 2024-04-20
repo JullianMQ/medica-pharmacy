@@ -4,7 +4,11 @@ function checkIfLoggedIn()
     if (empty($_SESSION['userName'])) {
         header("Location: login.php");
     } else {
-        echo "<button type='submit'><i class='fa fa-trash'></i></button>";
+        echo "
+        <form action='includes/remove_cart.inc.php' method='post' class='delete'>
+        <button class='bin' type='submit'><i class='fa fa-trash'></i></button>
+        </form>
+        ";
     }
 }
 
@@ -28,25 +32,23 @@ try {
             $db_prodID = $product['productID'];
             $db_prodPrice = $product['productPrice'];
             $cart_item_total = $db_prodPrice * $cart_quant;
-            $imagePath = "images/" . basename($product['imagePath']);
+            $imagePath = "images/uploads/products/" . basename($product['imagePath']);
             echo "
         <div class='items'>
             <div class='img'><img src='{$imagePath}' alt='{$product['productName']}'></div>
-            <div class='name'>
+            <div class='box'>
                 <div class='desc'> {$product['productName']}</div>
                 <div class='title'> {$product['productDesc']}</div>
-            </div>
-                <div class='qty-btn'>
-                    <button class='dec-btn' onclick='decrement(quantity{$db_prodID})'>-</button>
-                    <button class='inc-btn' onclick='increment(quantity{$db_prodID}, {$db_quant})'>+</button>
-                <form action='includes/insert_cart.inc.php' method='post' class='form'>
+                <button class='dec-btn' onclick='decrement(quantity{$db_prodID})'>-</button>
+                <button class='inc-btn' onclick='increment(quantity{$db_prodID}, {$db_quant})'>+</button>
+                <form action='includes/insert_cart.inc.php' method='post' id='form'>
                     <input type='number' class='qty-input' id='quantity{$db_prodID}' name='quantity' value='{$cart_quant}' min='1' max='$db_quant'>
                     <div class='price'> ₱ {$cart_item_total} </div>
                     <input type='hidden' name='productID' value='{$db_prodID}'>          
         ";
             checkIfLoggedIn();
             echo "  </form>
-                </div>
+            </div>
         </div>";
         }
         echo "
